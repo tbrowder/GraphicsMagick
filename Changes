@@ -1,4 +1,5 @@
 Revision history for GraphicsMagickUtils
 
 {{$NEXT}}
+    - Add crop-pic utility
     - Initial version
