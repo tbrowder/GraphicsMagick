@@ -1,0 +1,4 @@
+To collect from stdout:
+
+my $str = run('some prog', :out).out.slurp;
+
