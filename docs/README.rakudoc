@@ -1,0 +1,62 @@
+=begin pod
+
+=head1 NAME
+
+B<GraphicsMagickUtils> - Provides programs and functions for manipulating images
+
+=head1 SYNOPSIS
+
+=begin code :lang<raku>
+
+use GraphicsMagickUtils;
+
+=end code
+
+=head1 DESCRIPTION
+
+B<GraphicsMagickUtils> Uses the L<https://graphicsmagick.org> suite of tools to
+provide command-line (CL) programs and functions for manipulating impages programmatically.
+
+=head2 CL Programs
+
+=head3 B<crop-pic>
+
+A program designed for
+processing images for display on a website. 
+The program uses the I<graphicsmagicks>' command-line program I<gm> and
+its myriad of commands and options, all driven by Raku's I<run>.
+
+Its default action, given the name of
+an image file, is to determine:
+
+=item The width and height of the image
+
+=item The coordinates of the image's center
+
+=item The best contrasting color for overlays
+
+Then the program will overlay the image atop a white background with:
+
+=item An 'x' at the center
+
+=item A 100-pixel square border around the center
+
+=item A '+' at each corner of the image
+
+=item The coordinates of the center and each corner
+
+=item The name of the image
+
+=item The image's attributes 
+
+=head1 AUTHOR
+
+Tom Browder <tbrowder@acm.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2022 Tom Browder
+
+This library is free software; you may redistribute it or modify it under the Artistic License 2.0.
+
+=end pod
