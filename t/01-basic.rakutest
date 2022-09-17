@@ -1,6 +1,21 @@
 use Test;
-use GraphicsMagickUtils;
+use GraphicsMagick;
 
-lives-ok { run './bin/crop' }
+my $res;
+my @lines; 
+my $pic = "t/data/browder-tom.jpg";
+
+lives-ok { 
+    $res = run('raku', '-Ilib', './bin/crop', :out).out.slurp;
+    for $res.lines -> $line {
+        next if $line !~~ /\S/;
+        like $line, /^ Usage ': ' /;
+        last;
+    }
+}
+
+lives-ok { 
+    $res = run('raku', '-Ilib', "./bin/crop", "show", "$pic", :out).out.slurp 
+}
 
 done-testing;

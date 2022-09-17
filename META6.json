@@ -5,17 +5,20 @@
   "build-depends": [
   ],
   "depends": [
+    "Text::Utils",
+    "Ask"
   ],
-  "description": "blah blah blah",
+  "description": "Provides programs and functions for manipulating images",
   "license": "Artistic-2.0",
-  "name": "GraphicsMagickUtils",
+  "name": "GraphicsMagick",
   "perl": "6.d",
   "provides": {
-    "GraphicsMagickUtils": "lib/GraphicsMagickUtils.rakumod"
+    "GraphicsMagick": "lib/GraphicsMagick.rakumod",
+    "GraphicsMagick::Utils": "lib/GraphicsMagick/Utils.rakumod"
   },
   "resources": [
   ],
-  "source-url": "https://github.com/tbrowder/GraphicsMagickUtils.git",
+  "source-url": "https://github.com/tbrowder/GraphicsMagick.git",
   "tags": [
   ],
   "test-depends": [

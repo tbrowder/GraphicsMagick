@@ -2,13 +2,13 @@
 
 =head1 NAME
 
-B<GraphicsMagickUtils> - Provides programs and functions for manipulating images
+B<GraphicsMagick> - Provides programs and functions for manipulating images
 
 =head1 SYNOPSIS
 
 =begin code :lang<raku>
 
-use GraphicsMagickUtils;
+use GraphicsMagick;
 
 =end code
 
@@ -17,13 +17,21 @@ use GraphicsMagickUtils;
 B<GraphicsMagickUtils> Uses the L<http://graphicsmagick.org> suite of tools to
 provide command-line (CL) programs and functions for manipulating impages programmatically.
 
+Your host computer B<must> have the GraphicsMagic package, with its C<gm> CL program already installed.
+
+To install that package on a Debian host:
+
+=begin code
+$ sudo aptitude install graphicsmagick
+=end code
+
 =head2 CL Programs
 
 =head3 B<crop>
 
 A program designed for
 processing images for display on a website. 
-The program uses the I<graphicsmagicks>' command-line program I<gm> and
+The program uses the I<graphicsmagick>'s command-line program I<gm> and
 its myriad of commands and options, all driven by Raku's I<run> routine.
 
 Its default action, given the name of
@@ -51,13 +59,13 @@ Then the program will overlay the image atop a white background with:
 
 The user can then view the converted image to fine-tune the desired center point
 of the 100-pixel border by rerunning the program with the desired X,Y coordinates
-entered with the C<center> option and inspect those results, repeating as necessary,
+entered with the C<center=X,Y> option and inspect those results, repeating as necessary,
 and possibly adding more options, until satisfied with the results.
 
-At that point, the user can rerun the program and add the C<crop> mode to CL to
+At that point, the user can rerun the program and add the C<exec> mode to the CL to
 produce the desired cropped image with no overlays. The output image file, by default,
-will be named C<image.ctr-100-pix-square> but may be changed by use of another
-option.
+will be named C<image.ctr-100-pix-square>, but may be changed by use of
+option C<output=filename>.
 
 =head2 Planned features
 

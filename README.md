@@ -1,15 +1,15 @@
-[![Actions Status](https://github.com/tbrowder/GraphicsMagickUtils/actions/workflows/test.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagickUtils/actions)
+[![Actions Status](https://github.com/tbrowder/GraphicsMagick/actions/workflows/test.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagick/actions)
 
 NAME
 ====
 
-**GraphicsMagickUtils** - Provides programs and functions for manipulating images
+**GraphicsMagick** - Provides programs and functions for manipulating images
 
 SYNOPSIS
 ========
 
 ```raku
-use GraphicsMagickUtils;
+use GraphicsMagick;
 ```
 
 DESCRIPTION
@@ -17,12 +17,18 @@ DESCRIPTION
 
 **GraphicsMagickUtils** Uses the [http://graphicsmagick.org](http://graphicsmagick.org) suite of tools to provide command-line (CL) programs and functions for manipulating impages programmatically.
 
+Your host computer **must** have the GraphicsMagic package, with its `gm` CL program already installed.
+
+To install that package on a Debian host:
+
+    $ sudo aptitude install graphicsmagick
+
 CL Programs
 -----------
 
 ### **crop**
 
-A program designed for processing images for display on a website. The program uses the *graphicsmagicks*' command-line program *gm* and its myriad of commands and options, all driven by Raku's *run* routine.
+A program designed for processing images for display on a website. The program uses the *graphicsmagick*'s command-line program *gm* and its myriad of commands and options, all driven by Raku's *run* routine.
 
 Its default action, given the name of an image file, is to determine:
 
@@ -46,9 +52,9 @@ Then the program will overlay the image atop a white background with:
 
   * The image's attributes 
 
-The user can then view the converted image to fine-tune the desired center point of the 100-pixel border by rerunning the program with the desired X,Y coordinates entered with the `center` option and inspect those results, repeating as necessary, and possibly adding more options, until satisfied with the results.
+The user can then view the converted image to fine-tune the desired center point of the 100-pixel border by rerunning the program with the desired X,Y coordinates entered with the `center=X,Y` option and inspect those results, repeating as necessary, and possibly adding more options, until satisfied with the results.
 
-At that point, the user can rerun the program and add the `crop` mode to CL to produce the desired cropped image with no overlays. The output image file, by default, will be named `image.ctr-100-pix-square` but may be changed by use of another option.
+At that point, the user can rerun the program and add the `exec` mode to the CL to produce the desired cropped image with no overlays. The output image file, by default, will be named `image.ctr-100-pix-square`, but may be changed by use of option `output=filename`.
 
 Planned features
 ----------------
