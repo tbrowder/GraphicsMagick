@@ -14,7 +14,7 @@ use GraphicsMagickUtils;
 
 =head1 DESCRIPTION
 
-B<GraphicsMagickUtils> Uses the L<https://graphicsmagick.org> suite of tools to
+B<GraphicsMagickUtils> Uses the L<http://graphicsmagick.org> suite of tools to
 provide command-line (CL) programs and functions for manipulating impages programmatically.
 
 =head2 CL Programs

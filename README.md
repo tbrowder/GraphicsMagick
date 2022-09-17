@@ -15,7 +15,7 @@ use GraphicsMagickUtils;
 DESCRIPTION
 ===========
 
-**GraphicsMagickUtils** Uses the [https://graphicsmagick.org](https://graphicsmagick.org) suite of tools to provide command-line (CL) programs and functions for manipulating impages programmatically.
+**GraphicsMagickUtils** Uses the [http://graphicsmagick.org](http://graphicsmagick.org) suite of tools to provide command-line (CL) programs and functions for manipulating impages programmatically.
 
 CL Programs
 -----------
