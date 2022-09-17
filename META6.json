@@ -5,7 +5,7 @@
   "build-depends": [
   ],
   "depends": [
-    "Text::Utils:ver<3.2+>",
+    "Text::Utils:ver<3.2.0+>",
     "Ask"
   ],
   "description": "Provides programs and functions for manipulating images",
