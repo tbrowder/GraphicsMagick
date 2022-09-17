@@ -20,9 +20,9 @@ DESCRIPTION
 CL Programs
 -----------
 
-### **crop-pic**
+### **crop**
 
-A program designed for processing images for display on a website. The program uses the *graphicsmagicks*' command-line program *gm* and its myriad of commands and options, all driven by Raku's *run*.
+A program designed for processing images for display on a website. The program uses the *graphicsmagicks*' command-line program *gm* and its myriad of commands and options, all driven by Raku's *run* routine.
 
 Its default action, given the name of an image file, is to determine:
 
@@ -45,6 +45,19 @@ Then the program will overlay the image atop a white background with:
   * The name of the image
 
   * The image's attributes 
+
+The user can then view the converted image to fine-tune the desired center point of the 100-pixel border by rerunning the program with the desired X,Y coordinates entered with the `center` option and inspect those results, repeating as necessary, and possibly adding more options, until satisfied with the results.
+
+At that point, the user can rerun the program and add the `crop` mode to CL to produce the desired cropped image with no overlays. The output image file, by default, will be named `image.ctr-100-pix-square` but may be changed by use of another option.
+
+Planned features
+----------------
+
+  * Add more options to `crop`
+
+  * Add more programs for other major image transformations or conversions
+
+  * Save the last set of options used for each program and show them when arguments are entered. Then, if satisfied with the results, enter the image name with the `program` mode to get the resulting transformed image.
 
 AUTHOR
 ======

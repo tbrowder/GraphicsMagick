@@ -19,12 +19,12 @@ provide command-line (CL) programs and functions for manipulating impages progra
 
 =head2 CL Programs
 
-=head3 B<crop-pic>
+=head3 B<crop>
 
 A program designed for
 processing images for display on a website. 
 The program uses the I<graphicsmagicks>' command-line program I<gm> and
-its myriad of commands and options, all driven by Raku's I<run>.
+its myriad of commands and options, all driven by Raku's I<run> routine.
 
 Its default action, given the name of
 an image file, is to determine:
@@ -48,6 +48,26 @@ Then the program will overlay the image atop a white background with:
 =item The name of the image
 
 =item The image's attributes 
+
+The user can then view the converted image to fine-tune the desired center point
+of the 100-pixel border by rerunning the program with the desired X,Y coordinates
+entered with the C<center> option and inspect those results, repeating as necessary,
+and possibly adding more options, until satisfied with the results.
+
+At that point, the user can rerun the program and add the C<crop> mode to CL to
+produce the desired cropped image with no overlays. The output image file, by default,
+will be named C<image.ctr-100-pix-square> but may be changed by use of another
+option.
+
+=head2 Planned features
+
+=item Add more options to C<crop>
+
+=item Add more programs for other major image transformations or conversions
+
+=item Save the last set of options used for each program and show them when arguments
+are entered. Then, if satisfied with the results, enter the image name with the C<<program>> mode
+to get the resulting transformed image.
 
 =head1 AUTHOR
 
