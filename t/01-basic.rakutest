@@ -3,7 +3,7 @@ use GraphicsMagick;
 
 my $res;
 my @lines; 
-my $pic = "t/data/browder-tom.jpg";
+my $pic = "resources/tbrowder.jpg";
 
 lives-ok { 
     $res = run('raku', '-Ilib', './bin/crop', :out).out.slurp;
