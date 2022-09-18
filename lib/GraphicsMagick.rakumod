@@ -1,5 +1,10 @@
 unit module GraphicsMagick;
 
+#! Return the file name of an image in resources
+sub get-test-image($key = 'tbrowder.jpg') {
+    return %?RESOURCES{"images/$key"}.absolute.
+}
+
 class GM is export {
     has $.image is required;
     has $.llx;
@@ -13,6 +18,7 @@ class GM is export {
     has $.dpi;
 
     submethod TWEAK {
+        # 
         my $s = run("gm", "identify", "-verbose", "$!image", :out).out.slurp;
         my %h;
         for $s.lines -> $line {

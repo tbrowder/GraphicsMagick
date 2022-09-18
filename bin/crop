@@ -40,3 +40,30 @@ my $str = run("gm", :out).out.slurp;
 say $str;
 =end comment
 
+my %images;
+for @*ARGS {
+    when $_.IO.f {
+        my $image = $_; # may have to have an IO object
+        unless %images{$image}:exists {
+            note "NOTE: Skipping duplicate image '$image'";
+        }
+    }
+    when /^d/ {
+    }
+    default {
+        note "FATAL: Unknown input arg '$_'";
+    }
+}
+
+if not %images.elems {
+    if $debug {
+        # use the image in the resources<image>
+        my $image = get-test-image;
+        %images{$image} = 1;
+    }
+    else {
+        die "FATAL: No image was entered.";
+    }
+}
+
+
