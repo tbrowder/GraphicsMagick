@@ -3,7 +3,7 @@ use GraphicsMagick;
 
 my $res;
 my @lines; 
-my $pic = "resources/tbrowder.jpg";
+my $pic = get-test-image;
 
 lives-ok { 
     $res = run('raku', '-Ilib', './bin/crop', :out).out.slurp;
@@ -15,7 +15,15 @@ lives-ok {
 }
 
 lives-ok { 
-    $res = run('raku', '-Ilib', "./bin/crop", "show", "$pic", :out).out.slurp 
-}
+    try {
+        $res = run('raku', '-Ilib', "./bin/crop", "show", "$pic", :out).out.slurp 
+    }
+};
+
+lives-ok { 
+    try {
+        $res = run('raku', '-Ilib', "./bin/crop", "show", "$pic", :out).out.slurp 
+    }
+};
 
 done-testing;

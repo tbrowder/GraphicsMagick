@@ -40,15 +40,29 @@ my $str = run("gm", :out).out.slurp;
 say $str;
 =end comment
 
+
+
+# modes
+my $show  = 0;
+# options
+my $debug = 0;
+# other
 my %images;
 for @*ARGS {
     when $_.IO.f {
-        my $image = $_; # may have to have an IO object
-        unless %images{$image}:exists {
+        my $image = $_.IO.absolute; # may have to have an IO object
+        if %images{$image}:exists {
             note "NOTE: Skipping duplicate image '$image'";
+        }
+        else {
+            %images{$image} = 1;
         }
     }
     when /^d/ {
+        ++$debug
+    }
+    when /^s/ {
+        ++$show
     }
     default {
         note "FATAL: Unknown input arg '$_'";

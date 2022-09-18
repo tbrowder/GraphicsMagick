@@ -1,8 +1,9 @@
 unit module GraphicsMagick;
 
-#! Return the file name of an image in resources
-sub get-test-image($key = 'tbrowder.jpg') {
-    return %?RESOURCES{"images/$key"}.absolute.
+use Text::Utils :normalize-string;
+
+sub get-test-image($key = 'tbrowder.jpg') is export {
+    $?DISTRIBUTION.content("resources/images/$key").IO.absolute;
 }
 
 class GM is export {
@@ -16,6 +17,7 @@ class GM is export {
     has $.cx;
     has $.cy;
     has $.dpi;
+    has $.debug is rw = 0;
 
     submethod TWEAK {
         # 
@@ -23,9 +25,10 @@ class GM is export {
         my %h;
         for $s.lines -> $line {
             # split the line into key => value
-            if $line ~~ /^ \h* <[A..Za..z]>+ ) \h* ':' (\N+) / {
-                my $k  = ~$0.lc;
-                note "DEBUG: key: '$k'";
+            if $line ~~ /^ \h* ( <-[:]>+ ) \h* ':' (\N+) / {
+                my $k = ~$0.lc;
+                $k = normalize-string $k;
+                note "DEBUG: key: '$k'" if $!debug;
                 my $v  = ~$1;
                 %h{$k} = $v;
             }
