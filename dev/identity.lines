@@ -1,0 +1,87 @@
+Image: resources/tbrowder.jpg
+  Format: JPEG (Joint Photographic Experts Group JFIF format)
+  Geometry: 960x1280
+  Class: DirectClass
+  Type: true color
+  Depth: 8 bits-per-pixel component
+  Channel Depths:
+    Red:      8 bits
+    Green:    8 bits
+    Blue:     8 bits
+  Channel Statistics:
+    Red:
+      Minimum:                     0.00 (0.0000)
+      Maximum:                 65535.00 (1.0000)
+      Mean:                    18723.84 (0.2857)
+      Standard Deviation:      19849.08 (0.3029)
+    Green:
+      Minimum:                     0.00 (0.0000)
+      Maximum:                 65535.00 (1.0000)
+      Mean:                    16639.00 (0.2539)
+      Standard Deviation:      14466.92 (0.2208)
+    Blue:
+      Minimum:                     0.00 (0.0000)
+      Maximum:                 65535.00 (1.0000)
+      Mean:                    16639.25 (0.2539)
+      Standard Deviation:      16244.46 (0.2479)
+  Filesize: 487.1Ki
+  Interlace: No
+  Orientation: Unknown
+  Background Color: white
+  Border Color: #DFDFDF
+  Matte Color: #BDBDBD
+  Page geometry: 960x1280+0+0
+  Compose: Over
+  Dispose: Undefined
+  Iterations: 0
+  Compression: JPEG
+  JPEG-Quality: 96
+  JPEG-Colorspace: 2
+  JPEG-Colorspace-Name: RGB
+  JPEG-Sampling-factors: 2x2,1x1,1x1
+  Signature: 7317816033cd84518cf779292e83e90bf3bb44d78b6bf213b2132d1bb1d050fb
+  Profile-EXIF: 4092 bytes
+    Make: Apple
+    Model: iPhone 5
+    X Resolution: 72/1
+    Y Resolution: 72/1
+    Resolution Unit: 2
+    Software: 7.1.2
+    Date Time: 2014:07:12 06:03:44
+    Y Cb Cr Positioning: 1
+    Exif Offset: 180
+    Exposure Time: 1/20
+    F Number: 12/5
+    Exposure Program: 2
+    ISO Speed Ratings: 250
+    Exif Version: 0221
+    Date Time Original: 2014:07:12 06:03:44
+    Date Time Digitized: 2014:07:12 06:03:44
+    Components Configuration: \001\002\003\000
+    Shutter Speed Value: 3799/879
+    Aperture Value: 4845/1918
+    Brightness Value: 1572/1643
+    Metering Mode: 5
+    Flash: 16
+    Focal Length: 103/25
+    Subject Area: 1174
+    Maker Note: Apple iOS\000\000\001MM\000\006\000\001\000\011\000\000\000\001\000\000\000\000\000\003\000\007\000\000\000h\000\000\000\\000\004\000\011\000\000\000\001\000\000\000\000\000\005\000\011\000\000\000\001\000\000\000\252\000\006\000\011\000\000\000\001\000\000\000\230\000\007\000\011\000\000\000\001\000\000\000\001\000\000\000\000bplist00\324\001\002\003\004\005\006\007\010YtimescaleUvalueUepochUflags\022;\232\312\000\023\000\000sw\372a\372,\020\000\020\001\010\021\033!'-2;=\000\000\000\000\000\000\001\001\000\000\000\000\000\000\000\011\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000?
+    Sub Sec Time Original: 453
+    Sub Sec Time Digitized: 453
+    Flash Pix Version: 0100
+    Color Space: 1
+    Exif Image Width: 3264
+    Exif Image Length: 2448
+    Sensing Method: 2
+    Scene Type: \001
+    Exposure Mode: 0
+    White Balance: 0
+    Focal Length In35mm Film: 33
+    Scene Capture Type: 0
+    0xA432: 103/25
+    0xA433: Apple
+    0xA434: iPhone 5 back camera 4.12mm f/2.4
+  Tainted: False
+  User Time: 0.020u
+  Elapsed Time: 0m:0.024797s
+  Pixels Per Second: 47.3Mi
