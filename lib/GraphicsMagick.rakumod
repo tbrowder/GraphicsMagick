@@ -36,6 +36,7 @@ class GM is export {
                 note "DEBUG: unexpected line |$line|";
             }
         }
+        # assign the desired keys to the appropriate attribute
     }
 }
 
