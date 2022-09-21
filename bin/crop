@@ -49,7 +49,7 @@ my $debug = 0;
 # other
 my %images;
 for @*ARGS {
-    when $_.IO.f {
+    when /:i ['.jpg' | '.jpeg' | '.png' ] $/ and $_.IO.f {
         my $image = $_.IO.absolute; # may have to have an IO object
         if %images{$image}:exists {
             note "NOTE: Skipping duplicate image '$image'";
@@ -80,4 +80,6 @@ if not %images.elems {
     }
 }
 
+my $image = %images.keys.head; # get first elem
+my $gm = GM.new: :$image, :debug;
 
