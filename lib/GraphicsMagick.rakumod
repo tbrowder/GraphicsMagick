@@ -49,10 +49,8 @@ class GM is export {
             }
         }
 
-        note "DEBUG: {%h.raku}"; die;
-
         # assign the desired keys to the appropriate attribute
-        if %h<Geometry>:exists {
+        if %h{'Geometry'}:exists {
             my $t = %h<Geometry>;
             if $t ~~ /^ (\d+) 'x' (\d+) $/ {
                 $!width  = +$0;
@@ -60,9 +58,9 @@ class GM is export {
             }
             else { die "FATAL: Unknown value format"; }
         }
-        if %h<Date Time>:exists {
+        if %h{'Date Time'}:exists {
             # format: Date Time: 2014:07:12 06:03:44
-            my $t = %h<Date Time>;
+            my $t = %h{'Date Time'};
             if $t.defined and $t ~~ /^ 
                          \h*
                          (\w**4 ':' \w\w ':' \w\w)     # $0
