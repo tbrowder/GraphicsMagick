@@ -1,6 +1,7 @@
 unit module GraphicsMagick;
 
 use Text::Utils :normalize-string;
+use DateTime::US;
 
 sub get-test-image($key = 'tbrowder.jpg') is export {
     $?DISTRIBUTION.content("resources/images/$key").IO.absolute;
@@ -18,6 +19,7 @@ class GM is export {
     has $.ury:
     has $.cx;
     has $.cy;
+
     has $.dpi;
 
     submethod TWEAK {
@@ -50,26 +52,46 @@ class GM is export {
         }
 
         # assign the desired keys to the appropriate attribute
-        if %h{'Geometry'}:exists {
-            my $t = %h<Geometry>;
+        my $gk = 'Geometry';
+        if %h{$gk}:exists {
+            my $t = %h{$gk};
             if $t ~~ /^ (\d+) 'x' (\d+) $/ {
                 $!width  = +$0;
                 $!height = +$1;
             }
             else { die "FATAL: Unknown value format"; }
         }
-        if %h{'Date Time'}:exists {
+
+        my $dk = 'Date Time';
+        if %h{$dk}:exists {
             # format: Date Time: 2014:07:12 06:03:44
-            my $t = %h{'Date Time'};
+            my $t = %h{$dk};
             if $t.defined and $t ~~ /^ 
                          \h*
-                         (\w**4 ':' \w\w ':' \w\w)     # $0
+                         (\d**4) ':' (\d\d) ':' (\d\d)     # $0 $1 $2
                          \h+
-                         (\w**2 ':' \w\w ':' \w\w)     # $1
+                         (\d**2) ':' (\d\d) ':' (\d\d)     # $3 $4 $5
                          \h*
                      $/ {
-                my $date = ~$0;
-                my $time = ~$1;
+                # assume the date and time are local in our timezone
+                my $year   = +$0;
+                my $month  = +$1;
+                my $day    = +$2;
+                my $hour   = +$3;
+                my $minute = +$4;
+                my $second = +$5;
+
+                note "TODO get time in proper TZ";
+                my $timezone = "CST";
+                my $tz = DateTime::US.new: :$timezone;
+                my $lt = DateTime.new: :$year, :$month, :$day, :$hour, :$minute, :$second;
+                my $localtime = $tz.to-localtime($lt);
+                if $!debug {
+                    note qq:to/HERE/;
+                    DEBUG: input time: $localtime
+                    HERE
+                }
+
             }
             else { die "FATAL: Unknown value format: |$s|"; }
         }
