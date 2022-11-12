@@ -21,6 +21,7 @@ class GM is export {
     has $.cy;
 
     has $.dpi;
+    has LocalTime $.localtime;
 
     submethod TWEAK {
         # 
@@ -81,10 +82,10 @@ class GM is export {
                 my $minute = +$4;
                 my $second = +$5;
 
-                my $localtime = LocalTime.new: :$year, :$month, :$day, :$hour, :$minute, :$second;
+                $!localtime = LocalTime.new: :$year, :$month, :$day, :$hour, :$minute, :$second;
                 if $!debug {
                     note qq:to/HERE/;
-                    DEBUG: input time: $localtime
+                    DEBUG: input time: $!localtime
                     HERE
                 }
             }
