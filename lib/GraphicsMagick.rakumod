@@ -1,7 +1,7 @@
 unit module GraphicsMagick;
 
 use Text::Utils :normalize-string;
-use DateTime::US;
+use LocalTime;
 
 sub get-test-image($key = 'tbrowder.jpg') is export {
     $?DISTRIBUTION.content("resources/images/$key").IO.absolute;
@@ -81,22 +81,15 @@ class GM is export {
                 my $minute = +$4;
                 my $second = +$5;
 
-                note "TODO get time in proper TZ";
-                my $timezone = "CST";
-                my $tz = DateTime::US.new: :$timezone;
-                my $lt = DateTime.new: :$year, :$month, :$day, :$hour, :$minute, :$second;
-                my $localtime = $tz.to-localtime($lt);
+                my $localtime = LocalTime.new: :$year, :$month, :$day, :$hour, :$minute, :$second;
                 if $!debug {
                     note qq:to/HERE/;
                     DEBUG: input time: $localtime
                     HERE
                 }
-
             }
             else { die "FATAL: Unknown value format: |$s|"; }
         }
     }
 }
-
-
 
