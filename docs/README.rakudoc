@@ -27,7 +27,7 @@ $ sudo aptitude install graphicsmagick
 
 =head2 CL Programs
 
-=head3 B<crop>
+=head3 B<crop> NYI
 
 A program designed for
 processing images for display on a website. 
@@ -35,13 +35,15 @@ The program uses the I<graphicsmagick>'s command-line program I<gm> and
 its myriad of commands and options, all driven by Raku's I<run> routine.
 
 Its default action, given the name of
-an image file, is to determine:
+an image file, is to determine and display:
 
 =item The width and height of the image
 
 =item The coordinates of the image's center
 
-=item The best contrasting color for overlays
+B<THE FOLLOWING ARE NOT YET IMPLEMENTED>
+
+=item The best contrasting color for overlays 
 
 Then the program will overlay the image atop a white background with:
 
@@ -53,9 +55,9 @@ Then the program will overlay the image atop a white background with:
 
 =item The coordinates of the center and each corner
 
-=item The name of the image
+=item The name of the new image
 
-=item The image's attributes 
+=item The new image's attributes 
 
 The user can then view the converted image to fine-tune the desired center point
 of the 100-pixel border by rerunning the program with the desired X,Y coordinates
@@ -71,7 +73,7 @@ option C<output=filename>.
 
 =item Add more options to C<crop>
 
-=item Add more programs for other major image transformations or conversions
+=item Add more GM programs for other major image transformations or conversions
 
 =item Save the last set of options used for each program and show them when arguments
 are entered. Then, if satisfied with the results, enter the image name with the C<<program>> mode
@@ -83,7 +85,7 @@ Tom Browder <tbrowder@acm.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2022 Tom Browder
+© 2022 Tom Browder
 
 This library is free software; you may redistribute it or modify it under the Artistic License 2.0.
 
