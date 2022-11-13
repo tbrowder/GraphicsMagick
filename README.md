@@ -26,17 +26,19 @@ To install that package on a Debian host:
 CL Programs
 -----------
 
-### **crop**
+### **crop** NYI
 
 A program designed for processing images for display on a website. The program uses the *graphicsmagick*'s command-line program *gm* and its myriad of commands and options, all driven by Raku's *run* routine.
 
-Its default action, given the name of an image file, is to determine:
+Its default action, given the name of an image file, is to determine and display:
 
   * The width and height of the image
 
   * The coordinates of the image's center
 
-  * The best contrasting color for overlays
+**THE FOLLOWING ARE NOT YET IMPLEMENTED**
+
+  * The best contrasting color for overlays 
 
 Then the program will overlay the image atop a white background with:
 
@@ -48,9 +50,9 @@ Then the program will overlay the image atop a white background with:
 
   * The coordinates of the center and each corner
 
-  * The name of the image
+  * The name of the new image
 
-  * The image's attributes 
+  * The new image's attributes 
 
 The user can then view the converted image to fine-tune the desired center point of the 100-pixel border by rerunning the program with the desired X,Y coordinates entered with the `center=X,Y` option and inspect those results, repeating as necessary, and possibly adding more options, until satisfied with the results.
 
@@ -61,7 +63,7 @@ Planned features
 
   * Add more options to `crop`
 
-  * Add more programs for other major image transformations or conversions
+  * Add more GM programs for other major image transformations or conversions
 
   * Save the last set of options used for each program and show them when arguments are entered. Then, if satisfied with the results, enter the image name with the `program` mode to get the resulting transformed image.
 
@@ -73,7 +75,7 @@ Tom Browder <tbrowder@acm.org>
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2022 Tom Browder
+© 2022 Tom Browder
 
 This library is free software; you may redistribute it or modify it under the Artistic License 2.0.
 
