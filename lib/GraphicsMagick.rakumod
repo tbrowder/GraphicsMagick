@@ -3,7 +3,7 @@ unit module GraphicsMagick;
 use Text::Utils :normalize-string;
 use LocalTime;
 
-sub get-test-image($key = 'tbrowder.jpg') is export {
+sub get-test-image($key = 'sunset.jpg') is export {
     $?DISTRIBUTION.content("resources/images/$key").IO.absolute;
 }
 
@@ -21,6 +21,7 @@ class GM is export {
     has $.cy;
 
     has $.dpi;
+    has %.attributes;
     has LocalTime $.localtime;
 
     submethod TWEAK {
@@ -33,8 +34,8 @@ class GM is export {
             if $line ~~ /^ \h* ( <-[:]>+ ) \h* ':' (\N+)? $/ {
                 my $k = ~$0;
                 $k = normalize-string $k;
-                next if $k eq 'Maker Note';
-                next if $k eq 'Components Configuration';
+                #next if $k eq 'Maker Note';
+                #next if $k eq 'Components Configuration';
 
                 if $1.defined {
                     my $v  = ~$1;
@@ -91,6 +92,8 @@ class GM is export {
             }
             else { die "FATAL: Unknown value format: |$s|"; }
         }
+        # assign all to the object
+        %!attributes = %h;
     }
 }
 
