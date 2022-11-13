@@ -7,10 +7,12 @@ my $image = get-test-image;
 my $o = GM.new: :$image;
 print qq:to/HERE/;
 image:           {$o.image.IO.basename}
-time:            {$o.localtime.Str} 
+time:            {$o.localtime.defined ?? $o.localtime.Str !! '(unknown)';} 
 width (pixels):  {$o.width}
 height (pixels): {$o.height}
 HERE
+
+exit;
 
 say "== Dumping all attributes";
 my @keys = $o.attributes.keys.sort;

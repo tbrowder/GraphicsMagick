@@ -3,7 +3,7 @@ unit module GraphicsMagick;
 use Text::Utils :normalize-string;
 use LocalTime;
 
-sub get-test-image($key = 'sunset.jpg') is export {
+sub get-test-image($key = 'knuth.jpg') is export {
     $?DISTRIBUTION.content("resources/images/$key").IO.absolute;
 }
 
@@ -22,7 +22,7 @@ class GM is export {
 
     has $.dpi;
     has %.attributes;
-    has LocalTime $.localtime;
+    has LocalTime $.localtime; 
 
     submethod TWEAK {
         # 
