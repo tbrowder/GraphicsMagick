@@ -12,4 +12,13 @@ width (pixels):  {$o.width}
 height (pixels): {$o.height}
 HERE
 
+say "== Dumping all attributes";
+my @keys = $o.attributes.keys.sort;
+for @keys -> $k {
+    my $v = $o.attributes{$k};
+    say "key '$k' ==> '$v'";
+}
+say "== End dumping all attributes";
+
+
 
