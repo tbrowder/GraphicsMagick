@@ -1,0 +1,76 @@
+GraphicsMagick 1.4 snapshot-20210721 Q16 http://www.GraphicsMagick.org/
+Copyright (C) 2002-2020 GraphicsMagick Group.
+Additional copyrights and licenses apply to this software.
+See http://www.GraphicsMagick.org/www/Copyright.html for details.
+Usage: composite [options ...] image [options ...] composite
+  [ [options ...] mask ] [options ...] composite
+
+Where options include:
+  -affine matrix       affine transform matrix
+  -authenticate value  decrypt image with this password
+  -blue-primary point  chomaticity blue primary point
+  -colors value        preferred number of colors in the image
+  -colorspace type     alternate image colorspace
+  -comment string      annotate image with comment
+  -compose operator    composite operator
+  -compress type       image compression type
+  -debug events        display copious debugging information
+  -define values       Coder/decoder specific options
+  -density geometry    horizontal and vertical density of the image
+  -depth value         image depth
+  -displace geometry   shift image pixels defined by a displacement map
+  -display server      get image or font from this X server
+  -dispose method      Undefined, None, Background, Previous
+  -dissolve value      dissolve the two images a given percent
+  -dither              apply Floyd/Steinberg error diffusion to image
+  -encoding type       text encoding type
+  -endian type         multibyte word order (LSB, MSB, or Native)
+  -filter type         use this filter when resizing an image
+  -font name           render text with this font
+  -geometry geometry   location of the composite image
+  -gravity type        which direction to gravitate towards
+  -green-primary point chomaticity green primary point
+  -help                print program options
+  -interlace type      None, Line, Plane, or Partition
+  -label name          ssign a label to an image
+  -limit type value    Disk, File, Map, Memory, Pixels, Width, Height or
+                       Threads resource limit
+  -log format          format of debugging information
+  -matte               store matte channel if the image has one
+  -monitor             show progress indication
+  -monochrome          transform image to black and white
+  -negate              replace every pixel with its complementary color 
+  +page                reset current page offsets to default
+  -page geometry       size and location of an image canvas
+  -profile filename    add ICM or IPTC information profile to image
+  -quality value       JPEG/MIFF/PNG compression level
+  -recolor matrix      apply a color translation matrix to image channels
+  -red-primary point   chomaticity red primary point
+  -rotate degrees      apply Paeth rotation to the image
+  +repage              reset current page offsets to default
+  -repage geometry     adjust current page offsets by geometry
+  -resize geometry     resize the image
+  -sampling-factor HxV[,...]
+                       horizontal and vertical sampling factors
+  -scene value         image scene number
+  -set attribute value set image attribute
+  +set attribute       unset image attribute
+  -sharpen geometry    sharpen the image
+  -size geometry       width and height of image
+  -stegano offset      hide watermark within an image
+  -stereo              combine two image to create a stereo anaglyph
+  -strip               strip all profiles and text attributes from image
+  -thumbnail geometry  resize the image (optimized for thumbnails)
+  -tile                repeat composite operation across image
+  -transform           affine transform image
+  -treedepth value     color tree depth
+  -type type           image type
+  -units type          PixelsPerInch, PixelsPerCentimeter, or Undefined
+  -unsharp geometry    sharpen the image
+  -verbose             print detailed information about the image
+  -version             print version information
+  -virtual-pixel method
+                       Constant, Edge, Mirror, or Tile
+  -watermark geometry  percent brightness and saturation of a watermark
+  -white-point point   chomaticity white point
+  -write filename      write image to this file

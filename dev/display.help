@@ -1,0 +1,93 @@
+GraphicsMagick 1.4 snapshot-20210721 Q16 http://www.GraphicsMagick.org/
+Copyright (C) 2002-2020 GraphicsMagick Group.
+Additional copyrights and licenses apply to this software.
+See http://www.GraphicsMagick.org/www/Copyright.html for details.
+Usage: display [options ...] file [ [options ...] file ...]
+
+Where options include:
+  -authenticate value  decrypt image with this password
+  -backdrop            display image centered on a backdrop
+  -border geometry     surround image with a border of color
+  -colormap type       Shared or Private
+  -colors value        preferred number of colors in the image
+  -colorspace type     alternate image colorspace
+  -comment string      annotate image with comment
+  -compress type       image compression type
+  -contrast            enhance or reduce the image contrast
+  -crop geometry       preferred size and location of the cropped image
+  -debug events        display copious debugging information
+  -define values       Coder/decoder specific options
+  -delay value         display the next image after pausing
+  -density geometry    horizontal and vertical density of the image
+  -depth value         image depth
+  -despeckle           reduce the speckles within an image
+  -display server      display image to this X server
+  -dispose method      Undefined, None, Background, Previous
+  -dither              apply Floyd/Steinberg error diffusion to image
+  -edge factor         apply a filter to detect edges in the image
+  -endian type         multibyte word order (LSB, MSB, or Native)
+  -enhance             apply a digital filter to enhance a noisy image
+  -filter type         use this filter when resizing an image
+  -flip                flip image in the vertical direction
+  -flop                flop image in the horizontal direction
+  -frame geometry      surround image with an ornamental border
+  -gamma value         level of gamma correction
+  -geometry geometry   preferred size and location of the Image window
+  -help                print program options
+  -immutable           displayed image cannot be modified
+  -interlace type      None, Line, Plane, or Partition
+  -label name          assign a label to an image
+  -limit type value    Disk, File, Map, Memory, Pixels, Width, Height or
+                       Threads resource limit
+  -log format          format of debugging information
+  -map type            display image using this Standard Colormap
+  -matte               store matte channel if the image has one
+  -monitor             show progress indication
+  -monochrome          transform image to black and white
+  -negate              replace every pixel with its complementary color
+  -noop                do not apply options to image
+  -page geometry       size and location of an image canvas
+  +progress            disable progress monitor and busy cursor
+  -quality value       JPEG/MIFF/PNG compression level
+  -raise value         lighten/darken image edges to create a 3-D effect
+  -remote command      execute a command in an remote display process
+  -roll geometry       roll an image vertically or horizontally
+  -rotate degrees      apply Paeth rotation to the image
+  -sample geometry     scale image with pixel sampling
+  -sampling-factor HxV[,...]
+                       horizontal and vertical sampling factors
+  -scenes range        image scene range
+  -segment value       segment an image
+  -set attribute value set image attribute
+  +set attribute       unset image attribute
+  -sharpen geometry    sharpen the image
+  -size geometry       width and height of image
+  -texture filename    name of texture to tile onto the image background
+  -treedepth value     color tree depth
+  -trim                trim image edges
+  -type type           image type
+  -update seconds      detect when image file is modified and redisplay
+  -verbose             print detailed information about the image
+  -version             print version information
+  -visual type         display image using this visual type
+  -virtual-pixel method
+                       Constant, Edge, Mirror, or Tile
+  -window id           display image to background of this window
+  -window_group id     exit program when this window id is destroyed
+  -write filename      write image to a file
+
+In addition to those listed above, you can specify these standard X
+resources as command line options:  -background, -bordercolor,
+-borderwidth, -font, -foreground, -iconGeometry, -iconic, -mattecolor,
+-name, -shared-memory, -usePixmap, or -title.
+
+By default, the image format of `file' is determined by its magic
+number.  To specify a particular image format, precede the filename
+with an image format name and a colon (i.e. ps:image) or specify the
+image type as the filename suffix (i.e. image.ps).  Specify 'file' as
+'-' for standard input or output.
+
+Buttons:
+  1    press to map or unmap the Command widget
+  2    press and drag to magnify a region of an image
+  3    press to load an image from a visual image directory
