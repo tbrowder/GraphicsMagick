@@ -1,6 +1,5 @@
 #!/usr/bin/env raku
 
-use lib <../lib>; # remove before publishing
 use GraphicsMagick;
 
 if not @*ARGS.elems {
@@ -8,27 +7,32 @@ if not @*ARGS.elems {
 
     Usage: {$*PROGRAM.basename} image [mode] [options...]
 
-    This program uses the 'GraphicsMagick' library to crop an image
-    to a 100x100 size about a selected point. Dimensions and
-    points are given in pixels: X=width, Y=height.
+    This program uses the 'GraphicsMagick' library to manipulate
+    an image for use on a photo montage website or a photo album.
+
+    It can crop an image to a default 100x100 size about a selected 
+    point. Dimensions and points are given in pixels: X=width, Y=height.
+    The coordinate system used has its origin at the top-left corner of
+    the image with positive values increasing to the right and down.
 
     Modes:
-      show       - Shows image attributes
-      prep       - Shows the image dimensions in pixels along with other
-                   details based on selected options and values,
-                    including a copy of the original with a border
-                    superimposed upon the selected interior of the picture.
-      crop       - Crops the image to 100x100 pixels about the center of
-                    the image or the user-defined point.
+      show         - Shows primary image attributes
+      ahow all     - Shows all available attibutes
+      prep         - Shows the image dimensions in pixels along with other
+                     details based on selected options and values, including 
+                     a copy of the original with a border superimposed upon 
+                     the selected interior of the picture.
+      crop=WxH+X+Y - Crops the image to WxH pixels centered at X and Y of the 
+                     image. If the width and height are not specified, they 
+                     default to 100 pixels. If the X and Y are not specified,
+                     they default to the center of the image. If one of either 
+                     pair of values are specified, it is assumed to be the 
+                     value of both. If only one value is entered, all four 
+                     arguments take that value.
 
     Options:
-      
-      center=X,Y - Define the desired crop center point; takes precedence
-                   over a C<left> or C<bottom> option
-      width=X    - Crop width (default: 100)
-      height=Y   - Crop height (default: 100)
-      left=X     - Crop left edge crop point
-      bottom=Y   - Crop bottom edge crop point
+      color=X    - Changes the border color to X [default: white]
+      border=X   - Changes the border with to X pixels [default: 2]
       debug      - Developer use
 
     HERE
@@ -42,13 +46,22 @@ say $str;
 =end comment
 
 
-
 # modes
 my $show  = 0;
+my $prep  = 0;
+my $crop  = 0;
+my $all   = 0;
+
+# defaults
+my $height = 100;
+my $width  = 100;
+my $x; # 0.5 * image width
+my $y; # 0.5 * image height
+
 # options
 my $debug = 0;
 # other
-my %images;
+my %images; # key: basename, value: path
 for @*ARGS {
     when /:i ['.jpg' | '.jpeg' | '.png' ] $/ and $_.IO.f {
         my $image = $_.IO.absolute; # may have to have an IO object
@@ -56,15 +69,61 @@ for @*ARGS {
             note "NOTE: Skipping duplicate image '$image'";
         }
         else {
-            %images{$image} = 1;
+            %images{$image.IO.basename} = $image;
         }
     }
-    when /^d/ {
+    when /^d[ebug]?/ {
         ++$debug
     }
-    when /^s/ {
+    when /^s[how]?/ {
         ++$show
     }
+    when /^a[ll]?/ {
+        ++$all
+    }
+    when /^p[rep]?/ {
+        ++$prep; # overrides crop mode, but not its values
+    }
+    when /^c[rop]? $/ {
+        ++$crop
+    }
+    when /^c[rop] '=' (\d+) x (\d+) '+'  (\d+)  '+' (\d+)  $/ {
+        # WxH+X+Y
+        ++$crop;
+        $width  = +$0;
+        $height = +$1;
+        $x      = +$2;
+        $y      = +$3;
+    }
+    when /^c[rop] '=' (\d+)         '+'  (\d+)  '+' (\d+)  $/ {
+        # W+X+Y
+        $width  = +$0;
+        $height = +$0;
+        $x      = +$1;
+        $y      = +$2;
+    }
+    when /^c[rop] '=' (\d+) x (\d+) '+'  (\d+)             $/ {
+        # WxH+X
+        $width  = +$0;
+        $height = +$1;
+        $x      = +$2;
+        $y      = +$2;
+    }
+    when /^c[rop] '=' (\d+)         '+'  (\d+)             $/ {
+        # W+X
+        $width  = +$0;
+        $height = +$0;
+        $x      = +$1;
+        $y      = +$1;
+    }
+    when /^c[rop] '=' (\d+)                                $/ {
+        # W
+        $width  = +$0;
+        $height = +$0;
+        $x      = +$0;
+        $y      = +$0;
+    }
+
     default {
         note "FATAL: Unknown input arg '$_'";
     }
