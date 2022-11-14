@@ -51,7 +51,7 @@ The following tables show the currently planned modes and options and their impl
 <table class="pod-table">
 <caption>Options</caption>
 <thead><tr>
-<th>Optiom</th> <th>Implemented?</th> <th>Notes</th>
+<th>Option</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
 <tr> <td>color</td> <td>Yes</td> <td></td> </tr> <tr> <td>border</td> <td>Yes</td> <td></td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>

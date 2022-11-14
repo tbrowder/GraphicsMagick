@@ -53,7 +53,7 @@ display | No | Requires an X window
 =end table
 
 =begin table :caption<Options>
-Optiom | Implemented? | Notes
+Option | Implemented? | Notes
 -----+--------------+------
 color | Yes
 border | Yes
