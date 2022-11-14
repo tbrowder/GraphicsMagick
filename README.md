@@ -26,7 +26,7 @@ To install that package on a Debian host:
 CL Programs
 -----------
 
-### **photo** NYI
+### **photo**
 
 A program designed for processing images for display on a website. The program uses the *graphicsmagick*'s command-line program *gm* and some of its myriad of commands and options, all driven by Raku's *run* routine.
 
@@ -58,9 +58,12 @@ The following tables show the currently planned modes and options and their impl
 </tbody>
 </table>
 
+Other features are planned, PRs and feature requests are welcome.
+
 Execute program `photo` with the `help` option to see how to use it:
 
     $ photo help
+
     Usage: photo image [mode] [options...][help]
 
     This program uses the 'GraphicsMagick' library to manipulate
@@ -91,7 +94,7 @@ Execute program `photo` with the `help` option to see how to use it:
       border=X   - Changes the border with to X pixels [default: 2]
       debug      - Developer use
 
-Other features are planned, PRs and feature requests are welcome.
+Note 14 photos of human faces are available in the `resources/images` directory of the distribution. They were all obtained from the Debian `/use/share` directory and are free to use for any purpose. They are useful for experimenting with this module and its programs.
 
 AUTHOR
 ======

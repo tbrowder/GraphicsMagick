@@ -27,10 +27,9 @@ $ sudo aptitude install graphicsmagick
 
 =head2 CL Programs
 
-=head3 B<photo> NYI
+=head3 B<photo>
 
-A program designed for
-processing images for display on a website. 
+A program designed for processing images for display on a website. 
 The program uses the I<graphicsmagick>'s command-line program I<gm> and
 some of its myriad of commands and options, all driven by Raku's I<run> routine.
 
@@ -61,11 +60,15 @@ border | Yes
 debug | Yes |
 =end table
 
+Other features are planned, PRs and feature requests are
+welcome.
+
 Execute program C<photo> with the C<help> option to see how
 to use it:
 
 =begin code
 $ photo help
+
 Usage: photo image [mode] [options...][help]
 
 This program uses the 'GraphicsMagick' library to manipulate
@@ -97,8 +100,10 @@ Options:
   debug      - Developer use
 =end code
 
-Other features are planned, PRs and feature requests are
-welcome.
+Note 14 photos of human faces are available in the C<resources/images>
+directory of the distribution. They were all obtained from the
+Debian C</use/share> directory and are free to use for any purpose.
+They are useful for experimenting with this module and its programs.
 
 =head1 AUTHOR
 
