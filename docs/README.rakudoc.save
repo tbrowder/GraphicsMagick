@@ -1,0 +1,112 @@
+=begin pod
+
+=head1 NAME
+
+B<GraphicsMagick> - Provides programs and functions for manipulating images
+
+=head1 SYNOPSIS
+
+=begin code :lang<raku>
+
+use GraphicsMagick;
+
+=end code
+
+=head1 DESCRIPTION
+
+B<GraphicsMagickUtils> Uses the L<http://graphicsmagick.org> suite of tools to
+provide command-line (CL) programs and functions for manipulating images programmatically.
+
+Your host computer B<must> have the GraphicsMagic package, with its C<gm> CL program already installed.
+
+To install that package on a Debian host:
+
+=begin code
+$ sudo aptitude install graphicsmagick
+=end code
+
+=head2 CL Programs
+
+=head3 B<photo> NYI
+
+A program designed for
+processing images for display on a website. 
+The program uses the I<graphicsmagick>'s command-line program I<gm> and
+some of its myriad of commands and options, all driven by Raku's I<run> routine.
+
+Its default action, given the name of
+an image file, is to determine and display:
+
+=item The width and height of the image
+=item The coordinates of the image's center
+
+The following tables show the currently planned
+modes and options and their implementation status.
+
+=begin table :caption<Modes>
+Mode | Implemented? | Notes
+-----+--------------+------
+show | Yes          |
+show all | Yes
+prep | No | shows input data
+crop | No | shows input data
+display | No | Requires an X window
+=end table
+
+=begin table :caption<Options>
+Optiom | Implemented? | Notes
+-----+--------------+------
+color | Yes
+border | Yes
+debug | Yes |
+=end table
+
+Other planned features:
+
+=item Determine the best contrasting color for overlays 
+
+Then the program will overlay the image atop a white background with:
+
+=item An 'x' at the center
+
+=item A 100-pixel square border around the center
+
+=item A '+' at each corner of the image
+
+=item The coordinates of the center and each corner
+
+=item The name of the new image
+
+=item The new image's attributes 
+
+The user can then view the converted image to fine-tune the desired center point
+of the 100-pixel border by rerunning the program with the desired X,Y coordinates
+entered with the C<center=X,Y> option and inspect those results, repeating as necessary,
+and possibly adding more options, until satisfied with the results.
+
+At that point, the user can rerun the program and add the C<exec> mode to the CL to
+produce the desired cropped image with no overlays. The output image file, by default,
+will be named C<image.ctr-100-pix-square>, but may be changed by use of
+option C<output=filename>.
+
+=head2 Planned features
+
+=item Add more options to C<crop>
+
+=item Add more GM programs for other major image transformations or conversions
+
+=item Save the last set of options used for each program and show them when arguments
+are entered. Then, if satisfied with the results, enter the image name with the C<<program>> mode
+to get the resulting transformed image.
+
+=head1 AUTHOR
+
+Tom Browder <tbrowder@acm.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+© 2022 Tom Browder
+
+This library is free software; you may redistribute it or modify it under the Artistic License 2.0.
+
+=end pod
