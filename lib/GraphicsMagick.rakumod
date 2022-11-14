@@ -4,7 +4,7 @@ use Text::Utils :normalize-string;
 use LocalTime;
 
 sub get-test-image($key = 'knuth.jpg') is export {
-    $?DISTRIBUTION.content("resources/images/$key").IO.absolute;
+    %?RESOURCES{"images/$key"}.absolute;
 }
 
 class GM is export {
@@ -22,10 +22,14 @@ class GM is export {
 
     has $.dpi;
     has %.attributes;
-    has LocalTime $.localtime; 
+    has LocalTime $.localtime;
+
+    method time {
+        self.localtime.defined ?? self.localtime.Str !! "(unknown)"
+    }
 
     submethod TWEAK {
-        # 
+        #
         my $s = run("gm", "identify", "-verbose", "$!image", :out).out.slurp;
         my %h =[];
         for $s.lines -> $line {
@@ -49,7 +53,7 @@ class GM is export {
                 }
             }
             else {
-                note "DEBUG: unexpected line |$line|";
+                note "DEBUG: unexpected line |$line|" if $!debug;
             }
         }
 
@@ -68,7 +72,7 @@ class GM is export {
         if %h{$dk}:exists {
             # format: Date Time: 2014:07:12 06:03:44
             my $t = %h{$dk};
-            if $t.defined and $t ~~ /^ 
+            if $t.defined and $t ~~ /^
                          \h*
                          (\d**4) ':' (\d\d) ':' (\d\d)     # $0 $1 $2
                          \h+
@@ -93,7 +97,6 @@ class GM is export {
             else { die "FATAL: Unknown value format: |$s|"; }
         }
         # assign all to the object
-        %!attributes = %h;
+       %!attributes = %h;
     }
 }
-

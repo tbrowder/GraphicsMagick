@@ -1,6 +1,6 @@
 #!/usr/bin/env raku
 
-my $dir = "./jpg";
+my $dir = "./resources/images";
 my $pic-list = "pics.list";
 
 my %pics;
@@ -13,7 +13,7 @@ for $pic-list.IO.lines -> $pic {
         my ($stem, $suff) = split '.', $fname;
         if $stem ~~ /(\d+)/ {
             my $num = +$0;
-            ++$num;     
+            ++$num;
             $stem ~~ s/\d+$/$num/;
         }
         else {
@@ -27,4 +27,3 @@ for $pic-list.IO.lines -> $pic {
 for %pics.kv -> $pic, $src {
     copy $src, "./jpg/$pic";
 }
-
