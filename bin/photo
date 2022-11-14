@@ -2,10 +2,16 @@
 
 use GraphicsMagick;
 
+my $usage = "Usage: {$*PROGRAM.basename} image [mode] [options...][help]";
 if not @*ARGS.elems {
+    say $usage;
+    exit;
+}
+
+sub help() {
     print qq:to/HERE/;
 
-    Usage: {$*PROGRAM.basename} image [mode] [options...]
+    $usage
 
     This program uses the 'GraphicsMagick' library to manipulate
     an image for use on a photo montage website or a photo album.
@@ -37,7 +43,7 @@ if not @*ARGS.elems {
 
     HERE
     exit;
-}
+} # sub help
 
 =begin comment
 #my $str = run('some prog', :out).out.slurp;
@@ -71,6 +77,9 @@ for @*ARGS {
         else {
             %images{$image.IO.basename} = $image;
         }
+    }
+    when /^h[elp]?/ {
+        help(); # exits from there
     }
     when /^d[ebug]?/ {
         ++$debug
@@ -123,7 +132,6 @@ for @*ARGS {
         $x      = +$0;
         $y      = +$0;
     }
-
     default {
         note "FATAL: Unknown input arg '$_'";
     }
