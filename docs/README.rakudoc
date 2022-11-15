@@ -98,6 +98,7 @@ Options:
   color=X    - Changes the border color to X [default: white]
   border=X   - Changes the border with to X pixels [default: 2]
   debug      - Developer use
+
 =end code
 
 Note 14 photos of human faces are available in the C<resources/images>
