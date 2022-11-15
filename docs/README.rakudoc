@@ -79,9 +79,12 @@ point. Dimensions and points are given in pixels: X=width, Y=height.
 The coordinate system used has its origin at the top-left corner of
 the image with positive values increasing to the right and down.
 
+Output images are written to the local directory unless the 'to=X'
+option is use.
+
 Modes:
   show         - Shows primary image attributes
-  ahow all     - Shows all available attibutes
+  show all     - Shows all available attibutes
   prep         - Shows the image dimensions in pixels along with other
                  details based on selected options and values, including 
                  a copy of the original with a border superimposed upon 
@@ -93,10 +96,13 @@ Modes:
                  pair of values are specified, it is assumed to be the 
                  value of both. If only one value is entered, all four 
                  arguments take that value.
+  display      - With an X display, shows the image
 
 Options:
   color=X    - Changes the border color to X [default: white]
   border=X   - Changes the border with to X pixels [default: 2]
+  to=X       - Output directory [default: '.']
+  name=X     - Output image name [default: '$image.mod']
   debug      - Developer use
 
 =end code

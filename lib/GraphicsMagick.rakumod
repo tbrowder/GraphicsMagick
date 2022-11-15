@@ -12,20 +12,48 @@ class GM is export {
     has $.debug is rw = 0;
     has $.width;
     has $.height;
-    has $.llx = 0;
-    has $.lly = 0;
-
-    has $.urx;
-    has $.ury:
-    has $.cx;
-    has $.cy;
+    has $.x = 0; # top left is origin
+    has $.y = 0; # top left is origin
 
     has $.dpi;
     has %.attributes;
     has LocalTime $.localtime;
 
+    # cropping params set by setter methods
+    has $.c-width  = 100;
+    has $.c-height = 100;
+    has $.c-x;
+    has $.c-y;
+    has $.c-color = "white";
+    has $.c-border = 2;
+
     method time {
         self.localtime.defined ?? self.localtime.Str !! "(unknown)"
+    }
+    method set-crop($arg, :$val!) {
+        with $arg {
+            when /^w/ { 
+                $!c-width = $val; 
+            }
+            when /^h/ { 
+                $!c-height = $val; 
+            }
+            when /^x/ { 
+                $!c-x = $val;
+            }
+            when /^y/ { 
+                $!c-y = $val; 
+            }
+            when /^c/ { 
+                $!c-color = $val; 
+            }
+            when /^b/ { 
+                $!c-border = $val; 
+            }
+            default {
+                die "FATAL: Unknown set-crop arg '$_'";
+            }
+        }
     }
 
     submethod TWEAK {
@@ -97,6 +125,14 @@ class GM is export {
             else { die "FATAL: Unknown value format: |$s|"; }
         }
         # assign all to the object
-       %!attributes = %h;
+        %!attributes = %h;
+        # set default cropping values
+        my $hw = $!width * 0.5;
+        my $hh = $!height * 0.5;
+        my $x = $!width < 100 ?? 0 !! ($hw - 50);
+        my $y = $!height < 100 ?? 0 !! ($hh - 50);
+        
+        self.set-crop('x', :val($x));
+        self.set-crop('y', :val($y));
     }
 }

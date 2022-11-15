@@ -1,6 +1,7 @@
 #!/usr/bin/env raku
 
 use GraphicsMagick;
+use Ask;
 
 my $usage = "Usage: {$*PROGRAM.basename} image [mode] [options...][help]";
 if not @*ARGS.elems {
@@ -21,9 +22,12 @@ sub help() {
     The coordinate system used has its origin at the top-left corner of
     the image with positive values increasing to the right and down.
 
+    Output images are written to the local directory unless the 'to=X'
+    option is use.
+
     Modes:
       show         - Shows primary image attributes
-      ahow all     - Shows all available attibutes
+      show all     - Shows all available attibutes
       prep         - Shows the image dimensions in pixels along with other
                      details based on selected options and values, including 
                      a copy of the original with a border superimposed upon 
@@ -35,15 +39,33 @@ sub help() {
                      pair of values are specified, it is assumed to be the 
                      value of both. If only one value is entered, all four 
                      arguments take that value.
+      display      - With an X display, shows the image
 
     Options:
       color=X    - Changes the border color to X [default: white]
       border=X   - Changes the border with to X pixels [default: 2]
+      to=X       - Output directory [default: '.']
+      name=X     - Output image name [default: '\$image.mod']
       debug      - Developer use
 
     HERE
     exit;
 } # sub help
+
+my %opts = set <
+    color
+    border
+    to
+    name
+    debug
+>;
+my %modes = set <
+    show
+    all 
+    prep
+    crop
+    display
+>;
 
 =begin comment
 #my $str = run('some prog', :out).out.slurp;
@@ -51,23 +73,29 @@ my $str = run("gm", :out).out.slurp;
 say $str;
 =end comment
 
-
 # modes
-my $show  = 0;
-my $prep  = 0;
-my $crop  = 0;
-my $all   = 0;
+my $show    = 0;
+my $prep    = 0;
+my $crop    = 0;
+my $all     = 0;
+my $display = 0;
 
-# defaults
+# default options
+my $to     = '.'; # output directory
 my $height = 100;
 my $width  = 100;
 my $x; # 0.5 * image width
 my $y; # 0.5 * image height
 
-# options
+# other options
 my $debug = 0;
-# other
+my $force = 0;
+
+# misc other vars
+my $DEBUG = 0;
 my %images; # key: basename, value: path
+my %mode-used;
+my %opt-used;
 for @*ARGS {
     when /:i ['.jpg' | '.jpeg' | '.png' ] $/ and $_.IO.f {
         my $image = $_.IO.absolute; # may have to have an IO object
@@ -81,20 +109,29 @@ for @*ARGS {
     when /^h[elp]?/ {
         help(); # exits from there
     }
+    when /^d[isplay] $/ {
+        ++$display;
+        %mode-used<display> = 1;
+    }
     when /^d[ebug]?/ {
-        ++$debug
+        ++$debug;
+        %opt-used<debug> = 1;
     }
     when /^s[how]?/ {
-        ++$show
+        ++$show;
+        %mode-used<show> = 1;
     }
     when /^a[ll]?/ {
-        ++$all
+        ++$all;
+        %mode-used<all> = 1;
     }
     when /^p[rep]?/ {
         ++$prep; # overrides crop mode, but not its values
+        %mode-used<prep> = 1;
     }
     when /^c[rop]? $/ {
-        ++$crop
+        ++$crop;
+        %mode-used<crop> = 1;
     }
     when /^c[rop] '=' (\d+) x (\d+) '+'  (\d+)  '+' (\d+)  $/ {
         # WxH+X+Y
@@ -103,6 +140,11 @@ for @*ARGS {
         $height = +$1;
         $x      = +$2;
         $y      = +$3;
+        %mode-used<crop> = 1;
+        %opt-used<width> = 1;
+        %opt-used<height> = 1;
+        %opt-used<x> = 1;
+        %opt-used<y> = 1;
     }
     when /^c[rop] '=' (\d+)         '+'  (\d+)  '+' (\d+)  $/ {
         # W+X+Y
@@ -110,6 +152,10 @@ for @*ARGS {
         $height = +$0;
         $x      = +$1;
         $y      = +$2;
+        %opt-used<width> = 1;
+        %opt-used<height> = 1;
+        %opt-used<x> = 1;
+        %opt-used<y> = 1;
     }
     when /^c[rop] '=' (\d+) x (\d+) '+'  (\d+)             $/ {
         # WxH+X
@@ -117,6 +163,11 @@ for @*ARGS {
         $height = +$1;
         $x      = +$2;
         $y      = +$2;
+        %mode-used<crop> = 1;
+        %opt-used<width> = 1;
+        %opt-used<height> = 1;
+        %opt-used<x> = 1;
+        %opt-used<y> = 1;
     }
     when /^c[rop] '=' (\d+)         '+'  (\d+)             $/ {
         # W+X
@@ -124,6 +175,11 @@ for @*ARGS {
         $height = +$0;
         $x      = +$1;
         $y      = +$1;
+        %mode-used<crop> = 1;
+        %opt-used<width> = 1;
+        %opt-used<height> = 1;
+        %opt-used<x> = 1;
+        %opt-used<y> = 1;
     }
     when /^c[rop] '=' (\d+)                                $/ {
         # W
@@ -131,10 +187,28 @@ for @*ARGS {
         $height = +$0;
         $x      = +$0;
         $y      = +$0;
+        %mode-used<crop> = 1;
+        %opt-used<width> = 1;
+        %opt-used<height> = 1;
+        %opt-used<x> = 1;
+        %opt-used<y> = 1;
+    }
+    when %opts{$_}:exists or %modes{$_}:exists {
+        note "FATAL: Unhandled input arg '$_'";
     }
     default {
         note "FATAL: Unknown input arg '$_'";
     }
+}
+
+# special arg debugging
+if $DEBUG {
+    say "DEBUG args used:";
+    say "  Modes:";
+    say "    $_" for %mode-used.keys.sort;
+    say "  Options:";
+    say "    $_" for %opt-used.keys.sort;
+    say "Exiting"; exit;
 }
 
 if not %images.elems {
@@ -148,14 +222,22 @@ if not %images.elems {
     }
 }
 
+if $show {
+    if $all {
+    }
+    else {
+    }
+}
+
+=finish
+
 my $image = %images.keys.head; # get first elem
 my $gm = GM.new: :$image, :debug;
-#$image = get-test-image;
 
 my $o = GM.new: :$image;
 print qq:to/HERE/;
 image:           {$o.image.IO.basename}
-time:            {$o.localtime.Str} 
+time:            {$o.time} 
 width (pixels):  {$o.width}
 height (pixels): {$o.height}
 HERE
