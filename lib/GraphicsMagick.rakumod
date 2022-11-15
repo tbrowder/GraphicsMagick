@@ -30,6 +30,9 @@ class GM is export {
     method time {
         self.localtime.defined ?? self.localtime.Str !! "(unknown)"
     }
+    method basename {
+        self.image.IO.basename
+    }
     method set-crop($arg, :$val!) {
         with $arg {
             when /^w/ { 
@@ -134,5 +137,30 @@ class GM is export {
         
         self.set-crop('x', :val($x));
         self.set-crop('y', :val($y));
+    }
+
+    method show(:$all) {
+        print qq:to/HERE/;
+        Input image: {self.image}
+          basename:        {self.image.IO.basename}
+          time:            {self.time} 
+          width (pixels):  {self.width}
+          height (pixels): {self.height}
+        HERE
+
+        if $all {
+            say "All attributes:";
+            my @attrs = %!attributes.keys.sort;
+            my $len = 0;
+            for @attrs -> $a {
+                my $n = $a.chars;
+                $len = $n if $n > $len;
+            } 
+
+            for @attrs -> $a {
+                my $v = %!attributes{$a};
+                say sprintf("  %-*.*s: %-s", $len, $len, $a, $v):
+            } 
+        }
     }
 }

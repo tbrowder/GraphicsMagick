@@ -84,8 +84,8 @@ my $display = 0;
 my $to     = '.'; # output directory
 my $height = 100;
 my $width  = 100;
-my $x; # 0.5 * image width
-my $y; # 0.5 * image height
+my $x = 0.5 * $width;
+my $y = 0.5 * $height;
 
 # other options
 my $debug = 0;
@@ -94,11 +94,12 @@ my $force = 0;
 # misc other vars
 my $DEBUG = 0;
 my %images; # key: basename, value: path
+my $image;  # the current image
 my %mode-used;
 my %opt-used;
 for @*ARGS {
     when /:i ['.jpg' | '.jpeg' | '.png' ] $/ and $_.IO.f {
-        my $image = $_.IO.absolute; # may have to have an IO object
+        $image = $_.IO.absolute; # may have to have an IO object
         if %images{$image}:exists {
             note "NOTE: Skipping duplicate image '$image'";
         }
@@ -222,23 +223,36 @@ if not %images.elems {
     }
 }
 
-if $show {
-    if $all {
-    }
-    else {
-    }
+my $p = GM.new: :$image;
+if not %mode-used.elems {
+    $p.show;
+    exit;
 }
 
-=finish
+if $show {
+    if $all {
+        $p.show: :all;
+    }
+    else {
+        $p.show;
+    }
+    exit;
+}
 
-my $image = %images.keys.head; # get first elem
-my $gm = GM.new: :$image, :debug;
+if $crop {
+    print qq:to/HERE/;
+    Crop parameters for image {$p.basename}:
+        width:  {$p.c-width}
+        height: {$p.c-height}
+        x:      {$p.c-x}
+        y:      {$p.c-y}
+    HERE
+    say "Crop is not yet implemented"; 
+    exit;
+}
 
-my $o = GM.new: :$image;
-print qq:to/HERE/;
-image:           {$o.image.IO.basename}
-time:            {$o.time} 
-width (pixels):  {$o.width}
-height (pixels): {$o.height}
-HERE
+if $prep {
+    say "Prep is not yet implemented"; 
+    exit;
+}
 
