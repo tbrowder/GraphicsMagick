@@ -47,16 +47,20 @@ Mode | Implemented? | Notes
 -----+--------------+------
 show | Yes          |
 show all | Yes
-prep | No | shows input data
-crop | No | shows input data
+*crop | No | shows input data
+execute | No | No X display required
 display | No | Requires an X window
 =end table
+
+*Note: If an X display is available, the C<crop> mode will also
+display the original image with an overlay of the crop
+selection.
 
 =begin table :caption<Options>
 Option | Implemented? | Notes
 -----+--------------+------
-color | Yes
-border | Yes
+color | Yes | value is set
+border | Yes | value is set
 debug | Yes |
 =end table
 

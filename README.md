@@ -44,11 +44,11 @@ The following tables show the currently planned modes and options and their impl
 <th>Mode</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
-<tr> <td>show</td> <td>Yes</td> <td></td> </tr> <tr> <td>show all</td> <td>Yes</td> <td></td> </tr> <tr> <td>*crop</td> <td>No</td> <td>shows input data</td> </tr> <tr> <td>display</td> <td>No</td> <td>Requires an X window</td> </tr> <tr> <td>execute</td> <td>No</td> <td>No X windown required</td> </tr>
+<tr> <td>show</td> <td>Yes</td> <td></td> </tr> <tr> <td>show all</td> <td>Yes</td> <td></td> </tr> <tr> <td>*crop</td> <td>No</td> <td>shows input data</td> </tr> <tr> <td>execute</td> <td>No</td> <td>No X display required</td> </tr> <tr> <td>display</td> <td>No</td> <td>Requires an X window</td> </tr>
 </tbody>
 </table>
 
-*Note: Mode `crop` will display the crop selection overlayed on the original image if an X display is available.
+*Note: If an X display is available, the `crop` mode will also display the original image with an overlay of the crop selection.
 
 <table class="pod-table">
 <caption>Options</caption>
@@ -56,7 +56,7 @@ The following tables show the currently planned modes and options and their impl
 <th>Option</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
-<tr> <td>color</td> <td>Yes</td> <td>selection only</td> </tr> <tr> <td>border</td> <td>Yes</td> <td>selection only</td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
+<tr> <td>color</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>border</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
 </tbody>
 </table>
 
@@ -80,12 +80,9 @@ Execute program `photo` with the `help` option to see how to use it:
     option is use.
 
     Modes:
+      display      - With an X display, shows the raw image
       show         - Shows primary image attributes
       show all     - Shows all available attibutes
-      prep         - Shows the image dimensions in pixels along with other
-                     details based on selected options and values, including 
-                     a copy of the original with a border superimposed upon 
-                     the selected interior of the picture.
       crop=WxH+X+Y - Crops the image to WxH pixels centered at X and Y of the 
                      image. If the width and height are not specified, they 
                      default to 100 pixels. If the X and Y are not specified,
@@ -93,9 +90,12 @@ Execute program `photo` with the `help` option to see how to use it:
                      pair of values are specified, it is assumed to be the 
                      value of both. If only one value is entered, all four 
                      arguments take that value.
-      execute      - Executes the crop to produce the current set of crop
-                     parameters
-      display      - With an X display, shows the raw image
+
+                     If an X display is available, shows a copy of the original 
+                     with a border superimposed upon the selected crop area of 
+                     the picture.
+      execute      - Executes the crop to produce a new image with the current 
+                     set of crop parameters
 
     Options:
       color=X    - Changes the border color to X [default: white]

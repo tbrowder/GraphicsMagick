@@ -1,6 +1,8 @@
 default: all
 
 all:
-	./dev/build-readme.raku
+	./docs/build-readme.raku
+	mi6 build
+
 debug:
 	raku -Ilib ./bin/photo 
