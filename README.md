@@ -44,9 +44,11 @@ The following tables show the currently planned modes and options and their impl
 <th>Mode</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
-<tr> <td>show</td> <td>Yes</td> <td></td> </tr> <tr> <td>show all</td> <td>Yes</td> <td></td> </tr> <tr> <td>prep</td> <td>No</td> <td>shows input data</td> </tr> <tr> <td>crop</td> <td>No</td> <td>shows input data</td> </tr> <tr> <td>display</td> <td>No</td> <td>Requires an X window</td> </tr>
+<tr> <td>show</td> <td>Yes</td> <td></td> </tr> <tr> <td>show all</td> <td>Yes</td> <td></td> </tr> <tr> <td>*crop</td> <td>No</td> <td>shows input data</td> </tr> <tr> <td>display</td> <td>No</td> <td>Requires an X window</td> </tr> <tr> <td>execute</td> <td>No</td> <td>No X windown required</td> </tr>
 </tbody>
 </table>
+
+*Note: Mode `crop` will display the crop selection overlayed on the original image if an X display is available.
 
 <table class="pod-table">
 <caption>Options</caption>
@@ -54,7 +56,7 @@ The following tables show the currently planned modes and options and their impl
 <th>Option</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
-<tr> <td>color</td> <td>Yes</td> <td></td> </tr> <tr> <td>border</td> <td>Yes</td> <td></td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
+<tr> <td>color</td> <td>Yes</td> <td>selection only</td> </tr> <tr> <td>border</td> <td>Yes</td> <td>selection only</td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
 </tbody>
 </table>
 
@@ -74,9 +76,12 @@ Execute program `photo` with the `help` option to see how to use it:
     The coordinate system used has its origin at the top-left corner of
     the image with positive values increasing to the right and down.
 
+    Output images are written to the local directory unless the 'to=X'
+    option is use.
+
     Modes:
       show         - Shows primary image attributes
-      ahow all     - Shows all available attibutes
+      show all     - Shows all available attibutes
       prep         - Shows the image dimensions in pixels along with other
                      details based on selected options and values, including 
                      a copy of the original with a border superimposed upon 
@@ -88,10 +93,15 @@ Execute program `photo` with the `help` option to see how to use it:
                      pair of values are specified, it is assumed to be the 
                      value of both. If only one value is entered, all four 
                      arguments take that value.
+      execute      - Executes the crop to produce the current set of crop
+                     parameters
+      display      - With an X display, shows the raw image
 
     Options:
       color=X    - Changes the border color to X [default: white]
       border=X   - Changes the border with to X pixels [default: 2]
+      to=X       - Output directory [default: '.']
+      name=X     - Output image name [default: '$image.mod']
       debug      - Developer use
 
 Note 14 photos of human faces are available in the `resources/images` directory of the distribution. They were all obtained from the Debian `/use/share` directory and are free to use for any purpose. They are useful for experimenting with this module and its programs.

@@ -162,5 +162,11 @@ class GM is export {
                 say sprintf("  %-*.*s: %-s", $len, $len, $a, $v):
             } 
         }
+    } # submethod TWEAK
+    
+    # my $s = run("gm", "identify", "-verbose", "$!image", :out).out.slurp;
+    method execute {
+    }
+    method crop {
     }
 }

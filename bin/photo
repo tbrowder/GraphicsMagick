@@ -26,12 +26,9 @@ sub help() {
     option is use.
 
     Modes:
+      display      - With an X display, shows the raw image
       show         - Shows primary image attributes
       show all     - Shows all available attibutes
-      prep         - Shows the image dimensions in pixels along with other
-                     details based on selected options and values, including 
-                     a copy of the original with a border superimposed upon 
-                     the selected interior of the picture.
       crop=WxH+X+Y - Crops the image to WxH pixels centered at X and Y of the 
                      image. If the width and height are not specified, they 
                      default to 100 pixels. If the X and Y are not specified,
@@ -39,7 +36,12 @@ sub help() {
                      pair of values are specified, it is assumed to be the 
                      value of both. If only one value is entered, all four 
                      arguments take that value.
-      display      - With an X display, shows the image
+
+                     If an X display is available, shows a copy of the original 
+                     with a border superimposed upon the selected crop area of 
+                     the picture.
+      execute      - Executes the crop to produce a new image with the current 
+                     set of crop parameters
 
     Options:
       color=X    - Changes the border color to X [default: white]
@@ -62,9 +64,9 @@ my %opts = set <
 my %modes = set <
     show
     all 
-    prep
     crop
     display
+    execute
 >;
 
 =begin comment
@@ -75,10 +77,10 @@ say $str;
 
 # modes
 my $show    = 0;
-my $prep    = 0;
 my $crop    = 0;
 my $all     = 0;
 my $display = 0;
+my $execute = 0;
 
 # default options
 my $to     = '.'; # output directory
@@ -125,10 +127,6 @@ for @*ARGS {
     when /^a[ll]?/ {
         ++$all;
         %mode-used<all> = 1;
-    }
-    when /^p[rep]?/ {
-        ++$prep; # overrides crop mode, but not its values
-        %mode-used<prep> = 1;
     }
     when /^c[rop]? $/ {
         ++$crop;
@@ -251,8 +249,13 @@ if $crop {
     exit;
 }
 
-if $prep {
-    say "Prep is not yet implemented"; 
+if $execute {
+    say "Exexute is not yet implemented"; 
+    exit;
+}
+
+if $display {
+    say "Display is not yet implemented"; 
     exit;
 }
 
