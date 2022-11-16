@@ -54,7 +54,7 @@ The following tables show the currently planned modes and options and their impl
 <th>Option</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
-<tr> <td>color</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>border</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>to</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>name</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>force</td> <td>Yes</td> <td></td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
+<tr> <td>color</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>border</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>to-dir</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>name</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>force</td> <td>Yes</td> <td></td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
 </tbody>
 </table>
 
@@ -69,32 +69,32 @@ Execute program `photo` with the `help` option to see how to use it:
     This program uses the 'GraphicsMagick' library to manipulate
     an image for use on a photo montage website or a photo album.
 
-    It can crop an image to a default 100x100 size about a selected 
-    point. Dimensions and points are given in pixels: X=width, 
-    Y=height.  The coordinate system used has its origin at the 
-    top-left corner of the image with positive values increasing to 
+    It can crop an image to a default 100x100 size about a selected
+    point. Dimensions and points are given in pixels: X=width,
+    Y=height.  The coordinate system used has its origin at the
+    top-left corner of the image with positive values increasing to
     the right and down.
 
-    Output images are written to the local directory unless the 
+    Output images are written to the local directory unless the
     'to-dir=X' option is used.
 
     Modes:
       display      - With an X display, shows the raw image
       show         - Shows primary image attributes
       show all     - Shows all available attibutes
-      crop=WxH+X+Y - Crops the image to WxH pixels centered at X and 
-                     Y of the image. If the width and height are not 
-                     specified, they default to 100 pixels. If the X 
-                     and Y are not specified, they default to the 
-                     center of the image. If one of either pair of 
-                     values are specified, it is assumed to be the 
-                     value of both. If only one value is entered, 
+      crop=WxH+X+Y - Crops the image to WxH pixels centered at X and
+                     Y of the image. If the width and height are not
+                     specified, they default to 100 pixels. If the X
+                     and Y are not specified, they default to the
+                     center of the image. If one of either pair of
+                     values are specified, it is assumed to be the
+                     value of both. If only one value is entered,
                      all four arguments take that value.
 
-                     If an X display is available, shows a copy of 
-                     the original with a border superimposed upon 
+                     If an X display is available, shows a copy of
+                     the original with a border superimposed upon
                      the selected crop area of the picture.
-      execute      - Executes the crop to produce a new image with 
+      execute      - Executes the crop to produce a new image with
                      the current set of crop parameters
 
     Options:

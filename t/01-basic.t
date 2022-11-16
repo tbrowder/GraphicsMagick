@@ -1,11 +1,12 @@
 use Test;
 use GraphicsMagick;
+use GraphicsMagick::GM;
 use File::Find;
 
 my @images = find :dir("./resources/images"), :type("file"), :name(/'.jpg'$/);
 for @images -> $image-path {
     #note "DEBUG: $image-path";
-    my $o = GM.new: :image($image-path), :to-dir('.');
+    my $o = GM.new: :image($image-path);
     my $image = $image-path.basename;
     if $image eq "Bruennhilde.jpg" {
         is $o.image.IO.basename, $image;
