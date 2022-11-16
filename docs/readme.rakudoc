@@ -60,6 +60,9 @@ Option | Implemented? | Notes
 -----+--------------+------
 color | Yes | value is set
 border | Yes | value is set
+to  | Yes | value is set
+name | Yes | value is set
+force | Yes |
 debug | Yes |
 =end table
 

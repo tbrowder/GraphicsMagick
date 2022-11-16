@@ -24,7 +24,7 @@ sub help() {
     the right and down.
 
     Output images are written to the local directory unless the 
-    'to=X' option is use.
+    'to-dir=X' option is used.
 
     Modes:
       display      - With an X display, shows the raw image
@@ -48,7 +48,7 @@ sub help() {
     Options:
       color=X    - Changes the border color to X [default: white]
       border=X   - Changes the border with to X pixels [default: 2]
-      to=X       - Output directory [default: '.']
+      to-dir=X   - Output directory [default: '.']
       name=X     - Output image name [default: '\$image.mod']
       debug      - Developer use
 
@@ -59,7 +59,7 @@ sub help() {
 my %opts = set <
     color
     border
-    to
+    to-dir
     name
     debug
 >;
@@ -85,11 +85,12 @@ my $display = 0;
 my $execute = 0;
 
 # default options
-my $to     = '.'; # output directory
+my $to-dir = '.'; # output directory
 my $height = 100;
 my $width  = 100;
 my $x = 0.5 * $width;
 my $y = 0.5 * $height;
+my $name;
 
 # other options
 my $debug = 0;
@@ -118,9 +119,21 @@ for @*ARGS {
         ++$display;
         %mode-used<display> = 1;
     }
+    when /^f[orce]?/ {
+        ++$force;
+        %opt-used<force> = 1;
+    }
     when /^d[ebug]?/ {
         ++$debug;
         %opt-used<debug> = 1;
+    }
+    when /^n[ame]? '=' (\S) / {
+        $name = -$0;
+        %opt-used<name> = 1;
+    }
+    when /^t[o '-' dir]? '=' (\S) / {
+        ++$to-dir = ~$0;
+        %opt-used<to-dir> = 1;
     }
     when /^s[how]?/ {
         ++$show;
@@ -224,6 +237,9 @@ if not %images.elems {
 }
 
 my $p = GM.new: :$image;
+# set attributes
+$p.set-name($name) if $name.defined;
+
 if not %mode-used.elems {
     $p.show;
     exit;
@@ -252,7 +268,7 @@ if $crop {
 }
 
 if $execute {
-    say "Exexute is not yet implemented"; 
+    say "Execute is not yet implemented"; 
     exit;
 }
 

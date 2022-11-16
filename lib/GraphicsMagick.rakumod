@@ -26,6 +26,10 @@ class GM is export {
     has $.c-y;
     has $.c-color = "white";
     has $.c-border = 2;
+    # other attrs to be set
+    has $.name;
+    has $.force = 0;
+    has $.to-dir is required;
 
     method time {
         self.localtime.defined ?? self.localtime.Str !! "(unknown)"

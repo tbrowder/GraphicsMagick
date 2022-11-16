@@ -54,7 +54,7 @@ The following tables show the currently planned modes and options and their impl
 <th>Option</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
-<tr> <td>color</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>border</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
+<tr> <td>color</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>border</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>to</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>name</td> <td>Yes</td> <td>value is set</td> </tr> <tr> <td>force</td> <td>Yes</td> <td></td> </tr> <tr> <td>debug</td> <td>Yes</td> <td></td> </tr>
 </tbody>
 </table>
 
@@ -76,7 +76,7 @@ Execute program `photo` with the `help` option to see how to use it:
     the right and down.
 
     Output images are written to the local directory unless the 
-    'to=X' option is use.
+    'to-dir=X' option is used.
 
     Modes:
       display      - With an X display, shows the raw image
@@ -100,7 +100,7 @@ Execute program `photo` with the `help` option to see how to use it:
     Options:
       color=X    - Changes the border color to X [default: white]
       border=X   - Changes the border with to X pixels [default: 2]
-      to=X       - Output directory [default: '.']
+      to-dir=X   - Output directory [default: '.']
       name=X     - Output image name [default: '$image.mod']
       debug      - Developer use
 

@@ -11,7 +11,7 @@ top-left corner of the image with positive values increasing to
 the right and down.
 
 Output images are written to the local directory unless the 
-'to=X' option is use.
+'to-dir=X' option is used.
 
 Modes:
   display      - With an X display, shows the raw image
@@ -35,7 +35,7 @@ Modes:
 Options:
   color=X    - Changes the border color to X [default: white]
   border=X   - Changes the border with to X pixels [default: 2]
-  to=X       - Output directory [default: '.']
+  to-dir=X   - Output directory [default: '.']
   name=X     - Output image name [default: '$image.mod']
   debug      - Developer use
 
