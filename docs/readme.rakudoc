@@ -14,8 +14,9 @@ use GraphicsMagick;
 
 =head1 DESCRIPTION
 
-B<GraphicsMagickUtils> Uses the L<http://graphicsmagick.org> suite of tools to
-provide command-line (CL) programs and functions for manipulating images programmatically.
+B<GraphicsMagickUtils> Uses the L<http://graphicsmagick.org> suite of
+tools to provide command-line (CL) programs and functions for
+manipulating images programmatically.
 
 Your host computer B<must> have the GraphicsMagic package, with its C<gm> CL program already installed.
 
@@ -29,17 +30,18 @@ $ sudo aptitude install graphicsmagick
 
 =head3 B<photo>
 
-A program designed for processing images for display on a website. 
-The program uses the I<graphicsmagick>'s command-line program I<gm> and
-some of its myriad of commands and options, all driven by Raku's I<run> routine.
+A program designed for processing images for display on a website.
+The program uses the I<graphicsmagick>'s command-line program I<gm>
+and some of its myriad of commands and options, all driven by Raku's
+I<run> routine.
 
 Its default action, given the name of
 an image file, is to determine and display:
 
 =item The width and height of the image and its creation time
 
-The following tables show the currently planned
-modes and options and their implementation status.
+The following tables show the currently planned modes and options and
+their implementation status.
 
 =begin table :caption<Modes>
 Mode | Implemented? | Notes
@@ -52,8 +54,7 @@ display | No | Requires an X window
 =end table
 
 *Note: If an X display is available, the C<crop> mode will also
-display the original image with an overlay of the crop
-selection.
+display the original image with an overlay of the crop selection.
 
 =begin table :caption<Options>
 Option | Implemented? | Notes
@@ -78,9 +79,16 @@ Z<split parts 1 and 3 here, insert part2 between them>
 =end code
 
 Note 14 photos of human faces are available in the C<resources/images>
-directory of the distribution. They were all obtained from the
-Debian C</use/share> directory and are free to use for any purpose.
-They are useful for experimenting with this module and its programs.
+directory of the distribution. They were all obtained from the Debian
+C</use/share> directory and are free to use for any purpose.  They are
+useful for experimenting with this module and its programs.
+
+=head2 ToDo
+
+=item Add capability to run on MacOS and Windows
+=item Add tests
+=item Add more GM functions
+=item Add sample pictures and transformed results
 
 =head1 AUTHOR
 
