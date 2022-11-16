@@ -37,7 +37,6 @@ Its default action, given the name of
 an image file, is to determine and display:
 
 =item The width and height of the image
-=item The coordinates of the image's center
 
 The following tables show the currently planned
 modes and options and their implementation status.
