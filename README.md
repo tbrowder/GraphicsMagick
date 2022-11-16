@@ -32,7 +32,7 @@ A program designed for processing images for display on a website. The program u
 
 Its default action, given the name of an image file, is to determine and display:
 
-  * The width and height of the image
+  * The width and height of the image and its creation time
 
 The following tables show the currently planned modes and options and their implementation status.
 
@@ -42,7 +42,7 @@ The following tables show the currently planned modes and options and their impl
 <th>Mode</th> <th>Implemented?</th> <th>Notes</th>
 </tr></thead>
 <tbody>
-<tr> <td>show</td> <td>Yes</td> <td></td> </tr> <tr> <td>show all</td> <td>Yes</td> <td></td> </tr> <tr> <td>*crop</td> <td>No</td> <td>shows input data</td> </tr> <tr> <td>execute</td> <td>No</td> <td>No X display required</td> </tr> <tr> <td>display</td> <td>No</td> <td>Requires an X window</td> </tr>
+<tr> <td>show</td> <td>Yes</td> <td></td> </tr> <tr> <td>show all</td> <td>Yes</td> <td>shows all known attributes</td> </tr> <tr> <td>*crop</td> <td>No</td> <td>shows input data</td> </tr> <tr> <td>execute</td> <td>No</td> <td>No X display required</td> </tr> <tr> <td>display</td> <td>No</td> <td>Requires an X window</td> </tr>
 </tbody>
 </table>
 
