@@ -106,6 +106,17 @@ Execute program `photo` with the `help` option to see how to use it:
 
 Note 14 photos of human faces are available in the `resources/images` directory of the distribution. They were all obtained from the Debian `/use/share` directory and are free to use for any purpose. They are useful for experimenting with this module and its programs.
 
+ToDo
+----
+
+  * Add capability to run on MacOS and Windows
+
+  * Add tests
+
+  * Add more GM functions
+
+  * Add sample pictures and transformed results
+
 AUTHOR
 ======
 

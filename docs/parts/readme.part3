@@ -1,9 +1,16 @@
 =end code
 
 Note 14 photos of human faces are available in the C<resources/images>
-directory of the distribution. They were all obtained from the
-Debian C</use/share> directory and are free to use for any purpose.
-They are useful for experimenting with this module and its programs.
+directory of the distribution. They were all obtained from the Debian
+C</use/share> directory and are free to use for any purpose.  They are
+useful for experimenting with this module and its programs.
+
+=head2 ToDo
+
+=item Add capability to run on MacOS and Windows
+=item Add tests
+=item Add more GM functions
+=item Add sample pictures and transformed results
 
 =head1 AUTHOR
 
