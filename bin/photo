@@ -274,7 +274,8 @@ if $execute {
 }
 
 if $display {
-   $p.display;
-    say "Display is not yet implemented";
+    my $res = $p.display;
+    #say "Display is not yet implemented";
+    say $res;
     exit;
 }

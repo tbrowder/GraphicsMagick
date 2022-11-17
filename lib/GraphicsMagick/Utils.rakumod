@@ -11,7 +11,12 @@ say $str;
 =end comment
 
 sub gm-run-cmd($cmd, :$img!, :$option, :$debug) is export {
-
+    my $res;
+    if $cmd eq "display" {
+        $res = run("gm", $cmd, $img, :out).out.slurp;
+        return if $res.contains("gm display: Unable to open X server");
+    }
+    $res
 }
 
 sub gm-commands(:$debug) is export {
