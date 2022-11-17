@@ -1,5 +1,4 @@
 use Test;
-use GraphicsMagick;
 use GraphicsMagick::GM;
 use File::Find;
 

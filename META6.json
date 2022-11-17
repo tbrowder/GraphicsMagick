@@ -12,11 +12,12 @@
   ],
   "description": "Provides programs and functions for manipulating images",
   "license": "Artistic-2.0",
-  "name": "GraphicsMagick",
+  "name": "sto::GraphicsMagick",
   "perl": "6.d",
   "provides": {
-    "GraphicsMagick": "lib/GraphicsMagick.rakumod",
-    "GraphicsMagick::GM": "lib/GraphicsMagick/GM.rakumod"
+    "GraphicsMagick::GM": "lib/GraphicsMagick/GM.rakumod",
+    "GraphicsMagick::Utils": "lib/GraphicsMagick/Utils.rakumod",
+    "sto::GraphicsMagick": "lib/sto/GraphicsMagick.rakumod"
   },
   "resources": [
   ],

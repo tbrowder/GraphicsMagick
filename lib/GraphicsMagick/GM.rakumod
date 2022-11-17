@@ -2,7 +2,7 @@ unit class GraphicsMagick::GM is export;
 
 use Text::Utils :normalize-string;
 use LocalTime;
-use GraphicsMagick::Subs;
+use GraphicsMagick::Utils;
 
 has $.image is required;
 has $.debug is rw = 0;
@@ -22,6 +22,7 @@ has $.c-x;
 has $.c-y;
 has $.c-color = "white";
 has $.c-border = 2;
+
 # other attrs to be set
 has $.name;
 has $.force = 0;
@@ -141,7 +142,8 @@ submethod TWEAK {
 
     self.set-crop('x', :val($x));
     self.set-crop('y', :val($y));
-}
+
+} # submethod TWEAK
 
 method show(:$all) {
     print qq:to/HERE/;

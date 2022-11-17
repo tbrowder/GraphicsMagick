@@ -1,7 +1,7 @@
 #!/usr/bin/env raku
 
-use GraphicsMagick;
 use GraphicsMagick::GM;
+use GraphicsMagick::Utils;
 use Ask;
 
 my $usage = "Usage: {$*PROGRAM.basename} image [mode] [options...][help]";
@@ -274,6 +274,7 @@ if $execute {
 }
 
 if $display {
+   $p.display;
     say "Display is not yet implemented";
     exit;
 }
