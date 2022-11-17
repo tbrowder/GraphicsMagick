@@ -2,6 +2,7 @@ unit class GraphicsMagick::GM is export;
 
 use Text::Utils :normalize-string;
 use LocalTime;
+use GraphicsMagick::Subs;
 
 has $.image is required;
 has $.debug is rw = 0;
@@ -25,6 +26,10 @@ has $.c-border = 2;
 has $.name;
 has $.force = 0;
 has $.to-dir = '.';
+
+method display {
+    gm-run-cmd("display", :img($!image));
+}
 
 method time {
     self.localtime.defined ?? self.localtime.Str !! "(unknown)"
