@@ -65,7 +65,7 @@ method set-crop($arg, :$val!) {
 }
 
 submethod TWEAK {
-    my $s = run("gm", "identify", "-verbose", "$!image", :out).out.slurp;
+    my $s = run('gm', 'identify', '-verbose', "$!image", :out).out.slurp;
     my %h =[];
     for $s.lines -> $line {
         # split the line into key => value
