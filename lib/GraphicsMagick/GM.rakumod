@@ -1,4 +1,3 @@
-# comment
 unit class GraphicsMagick::GM is export;
 
 use Text::Utils :normalize-string;
@@ -28,42 +27,6 @@ has $.c-border = 2;
 has $.name;
 has $.force = 0;
 has $.to-dir = '.';
-
-method display {
-    gm-run-cmd("display", :img($!image));
-}
-
-method time {
-    self.localtime.defined ?? self.localtime.Str !! "(unknown)"
-}
-method basename {
-    self.image.IO.basename
-}
-method set-crop($arg, :$val!) {
-    with $arg {
-        when /^w/ {
-            $!c-width = $val;
-        }
-        when /^h/ {
-            $!c-height = $val;
-        }
-        when /^x/ {
-            $!c-x = $val;
-        }
-        when /^y/ {
-            $!c-y = $val;
-        }
-        when /^c/ {
-            $!c-color = $val;
-        }
-        when /^b/ {
-            $!c-border = $val;
-        }
-        default {
-            die "FATAL: Unknown set-crop arg '$_'";
-        }
-    }
-}
 
 submethod TWEAK {
     my $s = run('gm', 'identify', '-verbose', "$!image", :out).out.slurp;
@@ -143,6 +106,42 @@ submethod TWEAK {
     self.set-crop('y', :val($y));
 
 } # submethod TWEAK
+
+method display {
+    gm-run-cmd("display", :img($!image));
+}
+
+method time {
+    self.localtime.defined ?? self.localtime.Str !! "(unknown)"
+}
+method basename {
+    self.image.IO.basename
+}
+method set-crop($arg, :$val!) {
+    with $arg {
+        when /^w/ {
+            $!c-width = $val;
+        }
+        when /^h/ {
+            $!c-height = $val;
+        }
+        when /^x/ {
+            $!c-x = $val;
+        }
+        when /^y/ {
+            $!c-y = $val;
+        }
+        when /^c/ {
+            $!c-color = $val;
+        }
+        when /^b/ {
+            $!c-border = $val;
+        }
+        default {
+            die "FATAL: Unknown set-crop arg '$_'";
+        }
+    }
+}
 
 method show(:$all) {
     print qq:to/HERE/;
