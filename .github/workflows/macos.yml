@@ -24,6 +24,7 @@ jobs:
           raku-version: ${{ matrix.raku-version }}
       - name: Install required system packages
         run: export HOMEBREW_NO_INSTALL_CLEANUP='1'
+      - name: Install required system packages
         run: brew install graphicsmagick
       - name: Install Dependencies
         run: zef install --/test --test-depends --deps-only .
