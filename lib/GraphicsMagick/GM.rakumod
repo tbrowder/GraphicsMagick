@@ -1,3 +1,4 @@
+# comment
 unit class GraphicsMagick::GM is export;
 
 use Text::Utils :normalize-string;
