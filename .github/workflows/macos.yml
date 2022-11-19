@@ -23,7 +23,7 @@ jobs:
         with:
           raku-version: ${{ matrix.raku-version }}
       - name: Install required system packages
-        run: sudo apt install -y graphicsmagick
+        run: brew install graphicsmagick ghostscript
       - name: Install Dependencies
         run: zef install --/test --test-depends --deps-only .
       - name: Install App::Prove6

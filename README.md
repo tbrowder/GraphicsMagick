@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/tbrowder/GraphicsMagick/actions/workflows/linux.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagick/actions)
+[![Actions Status](https://github.com/tbrowder/GraphicsMagick/actions/workflows/linux.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagick/actions) [![Actions Status](https://github.com/tbrowder/GraphicsMagick/actions/workflows/macos.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagick/actions)
 
 NAME
 ====
@@ -17,11 +17,20 @@ DESCRIPTION
 
 **GraphicsMagickUtils** Uses the [http://graphicsmagick.org](http://graphicsmagick.org) suite of tools to provide command-line (CL) programs and functions for manipulating images programmatically.
 
-Your host computer **must** have the GraphicsMagic package, with its `gm` CL program already installed.
+Your host computer **must** have the GraphicsMagic package, with its `gm` CL program already installed. For some features it also requires the GTK3 library.
 
-To install that package on a Debian host:
+To install those packages on a Debian host:
 
     $ sudo aptitude install graphicsmagick
+    $ sudo aptitude install libgtk-3-dev
+
+Z
+=
+
+For a MacOS host
+
+    brew update
+    brew install gtk+3
 
 CL Programs
 -----------

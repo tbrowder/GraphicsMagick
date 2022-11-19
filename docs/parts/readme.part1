@@ -18,13 +18,25 @@ B<GraphicsMagickUtils> Uses the L<http://graphicsmagick.org> suite of
 tools to provide command-line (CL) programs and functions for
 manipulating images programmatically.
 
-Your host computer B<must> have the GraphicsMagic package, with its C<gm> CL program already installed.
+Your host computer B<must> have the GraphicsMagic package, with its
+C<gm> CL program already installed. For some features it also
+requires the GTK3 library.
 
-To install that package on a Debian host:
+To install those packages on a Debian host:
 
 =begin code
 $ sudo aptitude install graphicsmagick
+$ sudo aptitude install libgtk-3-dev
 =end code
+
+=begin Z
+For a MacOS host
+
+=begin code
+brew update
+brew install gtk+3
+=end code
+=end Z
 
 =head2 CL Programs
 
