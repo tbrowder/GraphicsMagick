@@ -34,7 +34,7 @@ For a MacOS host
 
 =begin code
 brew update
-brew install gtk+3
+brew install graphicsmagick gtk+3
 =end code
 =end Z
 

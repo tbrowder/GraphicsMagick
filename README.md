@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/tbrowder/GraphicsMagick/actions/workflows/linux.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagick/actions) [![Actions Status](https://github.com/tbrowder/GraphicsMagick/actions/workflows/macos.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagick/actions)
+[![Actions Status](https://github.com/tbrowder/GraphicsMagick/actions/workflows/linux.yml/badge.svg)](https://github.com/tbrowder/GraphicsMagick/actions)
 
 NAME
 ====
@@ -30,7 +30,7 @@ Z
 For a MacOS host
 
     brew update
-    brew install gtk+3
+    brew install graphicsmagick gtk+3
 
 CL Programs
 -----------
