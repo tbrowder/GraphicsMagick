@@ -29,14 +29,12 @@ $ sudo aptitude install graphicsmagick
 $ sudo aptitude install libgtk-3-dev
 =end code
 
-=begin Z
 For a MacOS host
 
 =begin code
 brew update
 brew install graphicsmagick gtk+3
 =end code
-=end Z
 
 =head2 CL Programs
 

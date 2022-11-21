@@ -24,9 +24,6 @@ To install those packages on a Debian host:
     $ sudo aptitude install graphicsmagick
     $ sudo aptitude install libgtk-3-dev
 
-Z
-=
-
 For a MacOS host
 
     brew update
