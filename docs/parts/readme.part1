@@ -14,12 +14,12 @@ use GraphicsMagick;
 
 =head1 DESCRIPTION
 
-B<GraphicsMagickUtils> Uses the L<http://graphicsmagick.org> suite of
+B<GraphicsMagick> Uses the L<http://graphicsmagick.org> suite of
 tools to provide command-line (CL) programs and functions for
 manipulating images programmatically.
 
-Your host computer B<must> have the GraphicsMagic package, with its
-C<gm> CL program already installed. For some features it also
+Your host computer B<must> have the GraphicsMagick package, with its
+C<gm> CLI program already installed. For some features it also
 requires the GTK3 library.
 
 To install those packages on a Debian host:
@@ -36,7 +36,7 @@ brew update
 brew install graphicsmagick gtk+3
 =end code
 
-=head2 CL Programs
+=head2 CLI Programs
 
 =head3 B<photo>
 
@@ -54,13 +54,13 @@ The following tables show the currently planned modes and options and
 their implementation status.
 
 =begin table :caption<Modes>
-Mode | Implemented? | Notes
------+--------------+------
-show | Yes          |
-show all | Yes | shows all known attributes
-*crop | No | shows input data
-execute | No | No X display required
-display | No | Requires an X window
+Mode     | Implemented? | Notes
+---------+--------------+------
+show     | Yes          |
+show all | Yes          | shows all known attributes
+*crop    | No           | shows input data
+execute  | No           | No X display required
+display  | No           | Requires an X window
 =end table
 
 *Note: If an X display is available, the C<crop> mode will also

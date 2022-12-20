@@ -1,9 +1,11 @@
 #!/usr/bin/env raku
 
-# called by the Makefile at the top repo module directory
-# so subdir are called like this: ./subdir
+# Called by the Makefile at the top repo module directory
+# so 'subdir's are called like this: ./subdir
 
 my $doc-dir = "./docs";
+# the main source file
+my $src = "$doc-dir/readme.rakudoc"; # which provides parts 1 and 3
 
 my $part1 = "$doc-dir/parts/readme.part1";
 my $part2 = "$doc-dir/parts/readme.part2";
@@ -11,8 +13,6 @@ my $part3 = "$doc-dir/parts/readme.part3";
 # the output file which is transformed to the github README.md
 my $doc = "$doc-dir/readme/README.rakudoc";
 
-# the main source file
-my $src = "$doc-dir/readme.rakudoc"; # which provides parts 1 and 3
 # generate parts 1 and 3 from $src
 gen-parts1and3 :$src, :$part1, :$part3;
 # gen part 2
