@@ -1,12 +1,12 @@
 use Test;
-use GraphicsMagick;
+use GraphicsMagick::Utils;
 
 my $res;
 my @lines; 
 my $pic = get-test-image;
 
 lives-ok { 
-    $res = run('raku', '-Ilib', './bin/crop', :out).out.slurp;
+    $res = run('raku', '-Ilib', './bin/photo', :out).out.slurp;
     for $res.lines -> $line {
         next if $line !~~ /\S/;
         like $line, /^ Usage ': ' /;
@@ -16,13 +16,13 @@ lives-ok {
 
 lives-ok { 
     try {
-        $res = run('raku', '-Ilib', "./bin/crop", "show", "$pic", :out).out.slurp 
+        $res = run('raku', '-Ilib', "./bin/photo", "show", "$pic", :out).out.slurp 
     }
 };
 
 lives-ok { 
     try {
-        $res = run('raku', '-Ilib', "./bin/crop", "show", "$pic", :out).out.slurp 
+        $res = run('raku', '-Ilib', "./bin/photo", "crop", "$pic", :out).out.slurp 
     }
 };
 

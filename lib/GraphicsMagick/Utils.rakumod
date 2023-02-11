@@ -1,7 +1,7 @@
 unit module GraphicsMagick::Utils;
 
 sub get-test-image($key = 'knuth.jpg') is export {
-    %?RESOURCES{"images/$key"}.absolute;
+    %?RESOURCES{"images/$key"}.IO.absolute;
 }
 
 =begin comment

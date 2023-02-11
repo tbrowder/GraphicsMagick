@@ -22,6 +22,7 @@
     "GraphicsMagick::Utils": "lib/GraphicsMagick/Utils.rakumod"
   },
   "resources": [
+    "images/knuth.jpg"
   ],
   "source-url": "https://github.com/tbrowder/GraphicsMagick.git",
   "tags": [

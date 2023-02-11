@@ -3,7 +3,6 @@ use File::Temp;
 
 use lib <./t>;
 use Utils;
-#use GraphicsMagick; # this is taken care of in t/Utils.rakumod
 
 my @hdrs;
 my @data;
