@@ -114,6 +114,9 @@ method display {
 method time {
     self.localtime.defined ?? self.localtime.Str !! "(unknown)"
 }
+method name {
+    self.image.IO.basename
+}
 method basename {
     self.image.IO.basename
 }

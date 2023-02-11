@@ -7,6 +7,7 @@ my $doc-dir = "./docs";
 # the main source file
 my $src = "$doc-dir/readme.rakudoc"; # which provides parts 1 and 3
 
+# parts generated during processing:
 my $part1 = "$doc-dir/parts/readme.part1";
 my $part2 = "$doc-dir/parts/readme.part2";
 my $part3 = "$doc-dir/parts/readme.part3";
