@@ -1,7 +1,8 @@
 #!/usr/bin/env raku
 
 use lib "../lib";
-use GraphicsMagick;
+use GraphicsMagick::GM;
+use GraphicsMagick::Utils;
 
 my $image = get-test-image;
 my $o = GM.new: :$image;
