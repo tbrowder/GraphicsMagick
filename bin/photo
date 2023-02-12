@@ -45,6 +45,8 @@ sub help() {
                      the selected crop area of the picture.
       execute      - Executes the crop to produce a new image with
                      the current set of crop parameters
+      list         - List sample photos included with the module.
+      get-pic=X    - Place a copy of sample photo X in the CWD.
 
     Options:
       color=X    - Changes the border color to X [default: white]

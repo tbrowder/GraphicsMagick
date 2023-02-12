@@ -61,6 +61,8 @@ show all | Yes          | shows all known attributes
 *crop    | No           | shows input data
 execute  | No           | No X display required
 display  | No           | Requires an X window
+list     | No           |
+get-pic  | No           |
 =end table
 
 *Note: If an X display is available, the C<crop> mode will also
